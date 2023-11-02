@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="javascript/javascript.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's personal website, hosting my resume and my data and analytics projects">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "data analyst, senior data analyst, data and analytics, consultant, pierre marionneau">
+        <!-- title tag, allowing to give a name to the page in the browser -->
+        <title>Pierre Marionneau - Data and Analytics Professional</title>
+        <title>Font Awesome Icons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header_section">
+            <div class = "navigation_section">
+                <button onclick="myFunction()" class = "navigation_button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation_menu" class = "navigation_menu">
+                    <ul class = "navigation_list"> 
+                        <li class = "navigation_item"><a href = "landing.html">Home</a></li>
+                        <li class = "navigation_item"><a href = "blogexpat.html">Projects</a></li>
+                        <li class = "navigation_item"><a href = "my-resume.html">Resume</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social_network_section">
+                <ul class = "social_network_list">
+                    <li class = "social_buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social_buttons"><a href="https://twitter.com/highxsky4" class="fa fa-github" alt = "Twitter"></a></li>
+                    <li class = "social_buttons"><a href="mailto:marionneaupierre@live.fr?subject=Un message suite à ma visite sur ton site !" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+<!--  block -->
+   <div id = "content" class = "container telus top-content">
+        <div class = "sub-container">
+            <div class = "telus-image">
+                
+                <!-- <a href = "aboutme.html"> -->
+                    <img src = "imgs/Telus office 2.jpg" alt = "Telus - Data Analyst" class = "telus-img">
+                </a>
+            </div>
+            <div class = "telus-text">
+                <h1>Telus - Data Analyst</h1>
+                <p>
+                    I joined Telus in 2022, as a Data Analyst, in Vancouver, BC (Canada).
+                </p>
+                <p>
+                    For over a year now, I have been involved in several projects, related to financial analysis, data migration and operations management.
+                    I mainly support teams through data analysis and process automation
+                    The technologies that I work with in my day to day are: 
+                    <ul>
+                        <li>Programming: python</li> 
+                        <li>Cloud: GCP</li> 
+                        <li>Databases: Oracle, MSSQL</li>
+                        <li>Reporting: Tableau, Looker Studio</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+<!--  block -->
+        <div class = "container kpmg">
+            <div class = "sub-container">
+                <div class = "kpmg-image">
+                    <a href = "#blogexpat.html">
+                        <img src = "imgs/kpmg 4.jpg" alt = "KPMG - Senior Consultant" class = "kpmg-img">
+                        <div class = "overlay">
+                            <div class = "text_overlay">
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class = "kpmg-text">
+                    <h1>KPMG - Senior consultant</h1>
+                    <p>
+                        I have worked for over 4 years (2018-2022) at KPMG Paris (France), as a Data & Analytics Senior Consultant.
+                    </p>
+                    <p>
+                        I have been involved in many client engagements: 
+                            solutions implementation (Customer Data Platform, Product Information Management), 
+                            building business intelligence solutions (reporting solutions for financial controlling and risk management), 
+                            designing a web application (for risk management)...
+                        The technologies that I have worked with are:
+                        <ul>
+                            <li>Programming: python</li> 
+                            <li>Cloud: Microsoft Azure</li> 
+                            <li>Databases: Oracle, MSSQL</li>
+                            <li>ETL: Alteryx, Knime, Dataiku</li>
+                            <li>Reporting: Power BI, Tableau</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+<!--  block -->
+<div class = "container bnpp">
+    <div class = "sub-container">
+        <div class = "bnpp-image">
+            <a href = "#blogexpat.html">
+                <img src = "imgs/bnpp 4.jpg" alt = "BNPP - Project manager" class = "bnpp-img">
+                <div class = "overlay">
+                    <div class = "text_overlay">
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class = "bnpp-text">
+            <h1>BNP Paribas - Project manager</h1>
+            <p>
+                I have worked at BNP Paribas for one year, before graduating, in 2017, within the Risk branch.
+            </p>
+            <p>
+                I was in charge of supporting the implementation of several initiatives, including the implementation of a Natural Language Processing (NLP) solution to support credit analysis.
+                I have also supported a yearly portfolio review, helping in the collection, processing, analysis and reporting of data.
+            </p>
+        </div>
+    </div>
+</div>
+
+    </body>
+
+    <footer>
+
+        <div class = "copyright_and_design">
+            <p>© Pierre Marionneau</p>
+            <p>Designed by me, using HTML, CSS and JS</p>
+        </div>
+    </footer>
+
+</html>
