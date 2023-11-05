@@ -132,7 +132,7 @@ FONT AWESOME
 }
 
 /* these are the icons related to each social media */
-.fa-twitter:hover, .fa-linkedin:hover, .fa-envelope:hover .fa-bars:hover { 
+.fa-github:hover, .fa-linkedin:hover, .fa-envelope:hover .fa-bars:hover { 
   background-color: var(--green);
   color: var(--darkest-green);
 }
@@ -344,7 +344,7 @@ NEW - NAVIGATION SECTION
     padding:0;
   }
 
-  .social_network_list { /* social media section (twitter, linkedin...), aka social network list */
+  .social_network_list { /* social media section (github, linkedin...), aka social network list */
     display: flex;
     flex-wrap: wrap;
     height: auto;
@@ -354,7 +354,7 @@ NEW - NAVIGATION SECTION
     padding: 0;
   }
 
-  .social_buttons { /* buttons of the social media section (twitter, linkedin...) */
+  .social_buttons { /* buttons of the social media section (github, linkedin...) */
     display: flex;
     flex-wrap: wrap;
     list-style: none;
