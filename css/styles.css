@@ -166,68 +166,6 @@ FONT AWESOME
   color:var(--light-green);
 }
 
-/*
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-
-NAVIGATION BAR
-
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-*/
-
-/* 
-HEADER SECTION
-- PROPERTIES
-  --> width: 100% --> bar stretched to the whole page width
-  --> position: fixed --> stays on top of the page
-  --> z-index: 1 --> menu will be above any other object
-  --> justify-content: space-between --> will support having one block on the left, one block on the right and space between
-*/
-   
-/* 
-NAVIGATION SECTION
-- PROPERTIES
-  --> width: bar stretched to the whole page width
-  --> position: fixed: stays on top
-  --> z-index: menu will be above any other object
-*/
-
-
-/* 
-OLD - NAVIGATION SECTION
-- PROPERTIES
-  --> width: bar stretched to the whole page width
-  --> position: fixed: stays on top
-  --> z-index: menu will be above any other object
-*/
-  
-/* .navigation_item a {
-  color:var(--lightest-green);
-  text-decoration: none;
-  font-size:0.75rem;
-  font-weight:500;
-  margin:0;
-  padding:0;
-  color: black;
-}
-
-.navigation_item a:hover {
-  color: var(--light-green);
-}
-
-.navigation_button {
-  display: flex;
-  height: 100%;
-  justify-content:flex-start;
-  align-items: center;
-  color: var(--light-green);
-  margin: 0;
-  padding: 0; */
-
-
 /* 
 NEW - NAVIGATION SECTION
 - PROPERTIES
@@ -270,17 +208,6 @@ NEW - NAVIGATION SECTION
 	outline: inherit;
   border: none;
 }
-
-/* .navigation_section { 
-  display: block; 
-  flex-basis: 60%;
-  margin: 1vmin;
-  padding: 0;
-  top:100%;
-  position: absolute;
-  right:0;
-  border: 1px solid red;
-}  */
 
 .navigation_section {
   position: relative;
@@ -335,138 +262,193 @@ NEW - NAVIGATION SECTION
 ////////////////////////////////////////////////////
  */
 
-  .social_network_section { /* third item of the header section, i.e. the social media links  */
-    align-items:flex-end;
-    justify-items:center;
-    flex-basis:30%;
-    text-align:center;
-    margin:1vmin;
-    padding:0;
-  }
+.social_network_section { /* third item of the header section, i.e. the social media links  */
+  align-items:flex-end;
+  justify-items:center;
+  flex-basis:30%;
+  text-align:center;
+  margin:1vmin;
+  padding:0;
+}
 
-  .social_network_list { /* social media section (github, linkedin...), aka social network list */
-    display: flex;
-    flex-wrap: wrap;
-    height: auto;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
+.social_network_list { /* social media section (github, linkedin...), aka social network list */
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
 
-  .social_buttons { /* buttons of the social media section (github, linkedin...) */
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 1%;
-    margin: 0;
-  }
+.social_buttons { /* buttons of the social media section (github, linkedin...) */
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 1%;
+  margin: 0;
+}
 
-  /* ||| Tooltip styling */
+/* ||| Tooltip styling */
 
-  .tooltip {
-    position: relative; /* making the .tooltip span a container for the tooltip text */
-    border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
-  }
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+  border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
+}
+
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position:absolute;
   
-  .tooltip:before {
-    content: attr(data-text); /* here's the magic */
-    position:absolute;
-    
-    /* vertically center */
-    top:50%;
-    transform:translateY(-50%);
-    
-    /* move to right */
-    left:100%;
-    margin-left:15px; /* and add a small left margin */
-    
-    /* basic styles */
-    width:200px;
-    padding:10px;
-    border-radius:10px;
-    background:#000;
-    color: #fff;
-    text-align:center;
+  /* vertically center */
+  top:50%;
+  transform:translateY(-50%);
   
-    display:none; /* hide by default */
-  }
+  /* move to right */
+  left:100%;
+  margin-left:15px; /* and add a small left margin */
+  
+  /* basic styles */
+  width:200px;
+  padding:10px;
+  border-radius:10px;
+  background:#000;
+  color: #fff;
+  text-align:center;
 
-  .tooltip:hover:before {
-    display:block;
-  }
+  display:none; /* hide by default */
+}
+
+.tooltip:hover:before {
+  display:block;
+}
 
 /* ||| Introduction section styling */
 
-  .intro_item { /* container of the images */
-    display: flex;
-    position: relative;
-    max-width: 80%; 
-    max-height: auto;
-    /* if the image is bigger than the box, the overflowing content is hidden */
-    overflow: hidden; 
-    margin: 1vw;
-  }
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: var(--light-green);
+}
 
-  .intro_item_img {
-    display: flex;
-    object-fit: fill; /* the image will fill the image container */
-    height: auto;
-    max-width: 100%;
-  }
+.text_overlay {
+  display: flex;
+  color: whitesmoke;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: var(--light-green);
-  }
+.intro_item:hover .overlay {
+  opacity: 1;
+}
 
-  .text_overlay {
-    display: flex;
-    color: whitesmoke;
-    position: absolute;
-    font-size: 12px;
-    font-weight: 800;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
-  3
-  .intro_item:hover .overlay {
-    opacity: 1;
-  }
+/* ||| Homepage containers styling */
 
-  /* ||| Homepage containers styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2%;
-  }
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  /* gap: 2vw; */
+  /* margin: 1vh max(20vw, 5vw); space between the different containers */
+  max-width: 80%; /* space between the different containers */
+}
 
-  .sub-container {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    /* gap: 2vw; */
-    /* margin: 1vh max(20vw, 5vw); space between the different containers */
-    max-width: 80%; /* space between the different containers */
-  }
+.container:nth-child(odd) {
+  background: var(--lightest-green)
+}
+
+.skipps-image {
+  display: flex;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.skipps-img {
+  display: flex;
+  object-fit: cover; 
+  overflow: hidden;    
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.skipps-image:hover .overlay {
+  opacity: 1;
+}
+
+.skipps-text {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  /* margin: 1vw; */
+  overflow: hidden;
+}
+
+.skipps-text > h1 {
+  font-size: 18px;
+  text-align: center;
+  margin: 0.5em 0em;
+}
+
+.skipps-text > p {
+  font-size: 12px;
+  text-align: justify;
+  margin: 0 0 1em 0;
+}
+
+.skipps-text > ul {
+  list-style:disc;
+  font-size: 12px;
+  list-style-position: outside;
+  text-align: justify;
+  margin: 0 0 0 0;
+}
+
+.skipps-text > a {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright_and_design {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  background-color: var(--darkest-green);
+}
+
+.copyright_and_design > p {
+  font-size: 10px;
+  margin: 0.5vw 0.5vh;
+  color: white;
+}
 
 
 /* ||| Presentation section styling */
 
-.presentation {
+/* .presentation {
   background-color: var(--lightest-green);
   padding-top: calc(45px + 1%);
 }
@@ -475,7 +457,6 @@ NEW - NAVIGATION SECTION
   display: flex;
   flex-direction: column;
   flex: 3;
-  /* margin: 1vw; */
   overflow: hidden;
 }
 
@@ -514,19 +495,16 @@ NEW - NAVIGATION SECTION
 
 .presentation-img {
   display: flex;
-  object-fit: cover; /* the image will fit the box and maintain the aspect ratio (corners will be cropped accordingly) */
+  object-fit: cover;
   overflow: hidden;    
   max-width: 100%;
   max-height: 100%;
 }
 
-/* ||| Presentation section styling */
-
 .projects-text {
   display: flex;
   flex-direction: column;
   flex: 3;
-  /* margin: 1vw; */
   overflow: hidden;
 }
 
@@ -565,15 +543,15 @@ NEW - NAVIGATION SECTION
 
 .projects-img {
   display: flex;
-  object-fit: cover; /* the image will fit the box and maintain the aspect ratio (corners will be cropped accordingly) */
+  object-fit: cover;
   overflow: hidden;    
   max-width: 100%;
   max-height: 100%;
-}
+} */
 
 /* ||| Resume section styling */
 
-.resume {
+/* .resume {
   background-color: var(--lightest-green);
 }
 
@@ -581,7 +559,6 @@ NEW - NAVIGATION SECTION
   display: flex;
   flex-direction: column;
   flex: 3;
-  /* margin: 1vw; */
   overflow: hidden;
 }
 
@@ -620,754 +597,194 @@ NEW - NAVIGATION SECTION
 
 .resume-img {
   display: flex;
-  object-fit: cover; /* the image will fit the box and maintain the aspect ratio (corners will be cropped accordingly) */
+  object-fit: cover;
+  overflow: hidden;    
+  max-width: 100%;
+  max-height: 100%;
+} */
+
+/* ||| Telus */
+
+/* .telus {
+  background-color: var(--lightest-green);
+  padding-top: calc(45px + 1%);
+}
+
+.telus-text {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  overflow: hidden;
+}
+
+.telus-text > h1 {
+  font-size: 18px;
+  text-align: center;
+  margin: 0.5em 0em;
+}
+
+.telus-text > p {
+  font-size: 12px;
+  text-align: justify;
+  margin: 0 0 1em 0;
+}
+
+.telus-text > ul {
+  list-style:disc;
+  font-size: 12px;
+  list-style-position: outside;
+  text-align: justify;
+  margin: 0 0 0 0;
+}
+
+.telus-text > a {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.telus-image {
+  display: flex;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.telus-img {
+  display: flex;
+  object-fit: cover; 
+  overflow: hidden;    
+  max-width: 100%;
+  max-height: 100%;
+} */
+
+/* ||| KPMG */
+
+/* .kpmg {
+  background-color: white;
+} */
+
+/* 
+properties
+- position: relative --> to manage overlay effect 
+- margin-left / right --> to automatically position in the middle (given its in a flex display)
+*/
+/* .kpmg-image {
+  display: flex;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.kpmg-img {
+  display: flex;
+  object-fit: cover; 
   overflow: hidden;    
   max-width: 100%;
   max-height: 100%;
 }
 
-/* ||| Telus */
-
-  .telus {
-    background-color: var(--lightest-green);
-    padding-top: calc(45px + 1%);
-  }
-
-  .telus-text {
-    display: flex;
-    flex-direction: column;
-    flex: 3;
-    /* margin: 1vw; */
-    overflow: hidden;
-  }
-
-  .telus-text > h1 {
-    font-size: 18px;
-    text-align: center;
-    margin: 0.5em 0em;
-  }
-
-  .telus-text > p {
-    font-size: 12px;
-    text-align: justify;
-    margin: 0 0 1em 0;
-  }
-
-  .telus-text > ul {
-    list-style:disc;
-    font-size: 12px;
-    list-style-position: outside;
-    text-align: justify;
-    margin: 0 0 0 0;
-  }
-
-  .telus-text > a {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .telus-image {
-    display: flex;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .telus-img {
-    display: flex;
-    object-fit: cover; /* the image will fit the box and maintain the aspect ratio (corners will be cropped accordingly) */
-    overflow: hidden;    
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-/* ||| KPMG */
-
-  .kpmg {
-    background-color: white;
-  }
-
-  /* 
-  properties
-  - position: relative --> to manage overlay effect 
-  - margin-left / right --> to automatically position in the middle (given its in a flex display)
-  */
-  .kpmg-image {
-    display: flex;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-  }
-
-  .kpmg-img {
-    display: flex;
-    object-fit: cover; 
-    overflow: hidden;    
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  .kpmg-image:hover .overlay {
-    opacity: 1;
-  }
+.kpmg-image:hover .overlay {
+  opacity: 1;
+}
 
 
-  .kpmg-text {
-    display: flex;
-    flex-direction: column;
-    flex: 3;
-    /* margin: 1vw; */
-    overflow: hidden;
-  }
+.kpmg-text {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  overflow: hidden;
+}
 
-  .kpmg-text > h1 {
-    font-size: 18px;
-    text-align: center;
-    margin: 0.5em 0em;
-  }
+.kpmg-text > h1 {
+  font-size: 18px;
+  text-align: center;
+  margin: 0.5em 0em;
+}
 
-  .kpmg-text > p {
-    font-size: 12px;
-    text-align: justify;
-    margin: 0 0 1em 0;
-  }
+.kpmg-text > p {
+  font-size: 12px;
+  text-align: justify;
+  margin: 0 0 1em 0;
+}
 
-  .kpmg-text > ul {
-    list-style:disc;
-    font-size: 12px;
-    list-style-position: outside;
-    text-align: justify;
-    margin: 0 0 0 0;
-  }
+.kpmg-text > ul {
+  list-style:disc;
+  font-size: 12px;
+  list-style-position: outside;
+  text-align: justify;
+  margin: 0 0 0 0;
+}
 
-  .kpmg-text > a {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
+.kpmg-text > a {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+} */
 
 /* ||| BNPP */
 
-  .bnpp {
-    background-color: var(--lightest-green);
-  }
+/* .bnpp {
+  background-color: var(--lightest-green);
+} */
 
-  /* 
-  properties
-  - position: relative --> to manage overlay effect 
-  - margin-left / right --> to automatically position in the middle (given its in a flex display)
-  */
-  .bnpp-image {
-    display: flex;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-  }
+/* 
+properties
+- position: relative --> to manage overlay effect 
+- margin-left / right --> to automatically position in the middle (given its in a flex display)
+*/
+/* .bnpp-image {
+  display: flex;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
 
-  .bnpp-img {
-    display: flex;
-    object-fit: cover; 
-    overflow: hidden;    
-    max-width: 100%;
-    max-height: 100%;
-  }
+.bnpp-img {
+  display: flex;
+  object-fit: cover; 
+  overflow: hidden;    
+  max-width: 100%;
+  max-height: 100%;
+}
 
-  .bnpp-image:hover .overlay {
-    opacity: 1;
-  }
-
-
-  .bnpp-text {
-    display: flex;
-    flex-direction: column;
-    flex: 3;
-    /* margin: 1vw; */
-    overflow: hidden;
-  }
-
-  .bnpp-text > h1 {
-    font-size: 18px;
-    text-align: center;
-    margin: 0.5em 0em;
-  }
-
-  .bnpp-text > p {
-    font-size: 12px;
-    text-align: justify;
-    margin: 0 0 1em 0;
-  }
-
-  .bnpp-text > ul {
-    list-style:disc;
-    font-size: 12px;
-    list-style-position: outside;
-    text-align: justify;
-    margin: 0 0 0 0;
-  }
-
-  .bnpp-text > a {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-/* ||| Blog post section styling */
-
-  .blog-post {
-    background-color: var(--light-green);
-  }
-
-  .blog-post-item-2 {
-    display: flex;
-    flex: 2;
-    border-radius: 5%;
-    position: relative; /* new */
-    overflow: hidden; /* new */
-    /* margin: 1vw; */
-  }
-
-  .blog-post-img {
-    display: flex;
-    object-fit: cover; /* the image will fit the box and maintain the aspect ratio (corners will be cropped accordingly) */
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 5%;
-  }
-
-  .blog-post-item-2:hover .overlay {
-    opacity: 1;
-  }
-
-  .blog-post-item-1 {
-    display: flex;
-    flex-direction: column;
-    flex: 3;
-    /* margin: 1vw; */
-    overflow: hidden;
-  }
-
-  .blog-post-item-1 > h1 {
-    font-size: 24px;
-    text-align: center;
-    margin: 0 0 1em 0;
-  }
-
-  .blog-post-item-1 > p {
-    font-size: 12px;
-    text-align: justify;
-    margin: 0 0 1em 0;
-  }
-
-  .blog-post-item-1 > ul {
-    list-style:disc;
-    font-size: 12px;
-    list-style-position: outside;
-    text-align: justify;
-    margin: 0 0 1em 0;
-  }
-
-  .blog-post-item-1 > a {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-/* ||| Last 3 articles section */
-
-  #last-3-articles {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #last-3-articles > h1 {
-    font-size: 24px;
-    text-align: center;
-    margin: 0 0 1em 0;
-  }
-
-  .last-3-articles {
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    gap: 1vw;
-  }
+.bnpp-image:hover .overlay {
+  opacity: 1;
+}
 
 
-  .articles-item { /* container of each article */
-    display: flex;
-    flex: 1;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .articles-article { /* article container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-
-  .articles-item-img { /* image as part of the article container */
-    object-fit: cover; /* the image will fit the box and maintain the aspect ratio (corners will be cropped accordingly) */
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-  }
-
-  .articles-list { /* list of tags */
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    margin: 0;   
-  }
-
-  .articles-list > li { /* each tag is written as list, these are therefore list items */
-    display: inline;
-  }
-
-  .articles-article > p {
-    font-size: 14px;
-    text-align: center;
-    font-weight: 600;
-  }
-
-/* ||| Footer section styling */
-
-  .copyright_and_design {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    background-color: var(--darkest-green);
-  }
-
-  .copyright_and_design > p {
-    font-size: 10px;
-    margin: 0.5vw 0.5vh;
-    color: white;
-  }
-
-/* ||| About Me section grid styling */
-
-  .grid-CV {
-    display: grid;
-    grid-template-columns: 
-                      [margin-left] minmax(auto, 0.1fr)
-                      [company-info] minmax(auto, 2fr)
-                      [work-info] minmax(auto, 5fr)
-                      [side-info] minmax(auto, 3fr)
-                      [margin-right] minmax(auto, 0.1fr);
-    grid-template-rows: 
-                      [margin-top] minmax(50px, auto)
-                      [identity] auto
-                      [cv-content-0] auto
-                      [cv-content-1] auto
-                      [cv-content-2] auto
-                      [cv-content-3] auto
-                      [dev-projects] auto
-                      [margin-bottom] minmax(10px, auto);
-    padding: 0;
-  }
-
-/* ||| About Me header sub-section styling */
-
-  .profile-picture {
-    grid-column-start: company-info;
-    grid-column-end: company-info;
-    grid-row-start: identity;
-    grid-row-end: identity;
-    background: var(--lightest-green);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2px 0 2px 2px;
-    padding: 0;
-  }
-
-  .profile-picture-container {
-    border-radius: 50%; /* applied at container level because the image is rectangular and it would mess the rendering  */
-    overflow: hidden; /* hidden parts of the rectangular image can be seen by removing this feature */
-    aspect-ratio: 1/1; /* allow to have a square div container, despite the upper level container not being square (and being responsive) */
-    margin: 5%;
-    height: auto;
-    width: 80%;
-  }
-
-  .profile-picture-img {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-top: -30px; /* allow to move the image up, so the face is not too cropped */
-  }
-
-  .profile-identity-container {
-    grid-column-start: work-info;
-    grid-column-end: work-info;
-    grid-row-start: identity;
-    grid-row-end: identity;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--lightest-green);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin: 2px 2px 2px 0;
-    padding: 0;
-  }
-
-  .profile-identity-container > h1 {
-    color: var(--darkest-green);
-    text-transform: uppercase;
-    font-size: 2em;
-    padding: 0.5vh 1vw;
-    margin: 0;
-  }
-
-  .profile-identity-container > h2 {
-    color: var(--darkest-green);
-    font-size: 1.5em;
-    font-weight: 600;
-    padding: 0.5vh 1vw;
-    margin: 0;
-  }
-  
-  .profile-identity-container > p {
-    color: var(--darkest-green);
-    font-size: 1em;
-    padding: 0.5vh 1vw;
-    margin: 0;
-  }
-
-/* ||| About Me key-info sub-section styling */
-
-.side-summarized-info {
-  grid-column-start: side-info;
-  grid-column-end: side-info;
-  grid-row-start: identity;
-  grid-row-end: identity;
-  border-radius: 10px;
-  background: #d3d3d3;
-  margin: 2px;
+.bnpp-text {
   display: flex;
   flex-direction: column;
+  flex: 3;
+  /* margin: 1vw; */
+  /* overflow: hidden;
+}
+
+.bnpp-text > h1 {
+  font-size: 18px;
+  text-align: center;
+  margin: 0.5em 0em;
+}
+
+.bnpp-text > p {
+  font-size: 12px;
+  text-align: justify;
+  margin: 0 0 1em 0;
+}
+
+.bnpp-text > ul {
+  list-style:disc;
+  font-size: 12px;
+  list-style-position: outside;
+  text-align: justify;
+  margin: 0 0 0 0;
+}
+
+.bnpp-text > a {
+  text-align: center;
   justify-content: center;
-} 
-
-.side_key_items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-} 
-
-.cv_icons {
-  margin: 5px 0px;
-  padding: 0;
-} 
-
-
-/* ||| About Me skills sub-section styling */
-
-.skills {
-  grid-column-start: side-info;
-  grid-column-end: side-info;
-  grid-row-start: cv-content-0;
-  grid-row-end: margin-bottom;
-  border-radius: 10px;
-  padding: 0;
-  margin: 2px;
-  background: var(--lightest-green);
-} 
-
-.skills > h1 {
-  color: var(--darkest-green);
-  text-transform: uppercase;
-  font-size: 1.5em;
-  text-align: left;
-  padding: 0 0 2vh 1vw;
-}
-
-.skills > ul {
-    color: black;
-    font-weight: 600;
-    font-size: 1em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 0 1vw;
-    margin: 0;
-  }
-
-  .skills > ul > li {
-    color: black;
-    font-size: 1em;
-    font-weight: initial;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 0 1vw;
-    margin: 0;
-  }
-
-
-
-/* ||| About Me title "work experience" styling */
-
-.title-work-experience {
-  grid-column-start: company-info;
-  grid-column-end: side-info;
-  grid-row-start: cv-content-0;
-  grid-row-end: cv-content-0;
-  padding: 0;
-  margin: 2px;
-}
-
-.title-work-experience > h1 {
-  color: var(--darkest-green);
-  text-transform: uppercase;
-  font-size: 1.5em;
-  text-align: left;
-  padding: 0 0 2vh 1vw;
-}
-
-/* ||| About Me companies information styling */
-
-.companies-information-item-1 {
-  grid-column-start: company-info;
-  grid-column-end: work-info;
-  grid-row-start: cv-content-1;
-  grid-row-end: cv-content-1;
-  padding: 0 1vw;
-}
-
-.companies-information-item-1 > h1 {
-  color: black;
-  font-weight: 600;
-  font-size: 1.4em;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-1 > h2 {
-  color: black;
-  font-size: 1.2em;
-  font-weight: 500;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-1 > h3 {
-  color: black;
-  font-size: 1em;
-  font-weight: initial;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-2 {
-  grid-column-start: company-info;
-  grid-column-end: work-info;
-  grid-row-start: cv-content-2;
-  grid-row-end: cv-content-2;
-  padding: 0 1vw;
-}
-
-.companies-information-item-2 > h1 {
-  color: black;
-  font-weight: 600;
-  font-size: 1.4em;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-2 > h2 {
-  color: black;
-  font-size: 1.2em;
-  font-weight: 500;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-2 > h3 {
-  color: black;
-  font-size: 1em;
-  font-weight: initial;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-3 {
-  grid-column-start: company-info;
-  grid-column-end: work-info;
-  grid-row-start: cv-content-3;
-  grid-row-end: cv-content-3;
-  padding: 0 1vw;
-}
-
-.companies-information-item-3 > h1 {
-  color: black;
-  font-weight: 600;
-  font-size: 1.4em;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-3 > h2 {
-  color: black;
-  font-size: 1.2em;
-  font-weight: 500;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-.companies-information-item-3 > h3 {
-  color: black;
-  font-size: 1em;
-  font-weight: initial;
-  text-align: left;
-  list-style-position: inside;
-  padding: 0 0 15px 0;
-  margin: 0;
-}
-
-  /* ||| About Me work-experience styling */
-
-  .work-experience-item-1 {
-    grid-column-start: work-info;
-    grid-column-end: side-info;
-    grid-row-start: cv-content-1;
-    grid-row-end: cv-content-1;
-    padding: 0 1vw 5vh 0;
-  }
-
-  .work-experience-item-1 > h1 {
-    color: black;
-    font-weight: 600;
-    font-size: 1.4em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-  .work-experience-item-1 > ul {
-    color: black;
-    font-weight: 600;
-    font-size: 1em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0;
-    margin: 0;
-  }
-
-  .work-experience-item-1 > ul > li {
-    color: black;
-    font-size: 1em;
-    font-weight: initial;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0;
-    margin: 0;
-  }
-
-  .work-experience-item-2 {
-    grid-column-start: work-info;
-    grid-column-end: side-info;
-    grid-row-start: cv-content-2;
-    grid-row-end: cv-content-2;
-    padding: 0 1vw 5vh 0;
-  }
-
-  .work-experience-item-2 > h1 {
-    color: black;
-    font-weight: 600;
-    font-size: 1.4em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-  .work-experience-item-2 > ul {
-    color: black;
-    font-weight: 600;
-    font-size: 1em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-  .work-experience-item-2 > ul > li {
-    color: black;
-    font-size: 1em;
-    font-weight: initial;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-  .work-experience-item-3 {
-    grid-column-start: work-info;
-    grid-column-end: side-info;
-    grid-row-start: cv-content-3;
-    grid-row-end: cv-content-3;
-    padding: 0 1vw 5vh 0;
-  }
-
-  .work-experience-item-3 > h1 {
-    color: black;
-    font-weight: 600;
-    font-size: 1.4em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-  .work-experience-item-3 > ul {
-    color: black;
-    font-weight: 600;
-    font-size: 1em;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-  .work-experience-item-3 > ul > li {
-    color: black;
-    font-size: 1em;
-    font-weight: initial;
-    text-align: justify;
-    list-style-position: inside;
-    padding: 0 0 15px 0;
-    margin: 0;
-  }
-
-
-  
+  align-items: center;
+} */
