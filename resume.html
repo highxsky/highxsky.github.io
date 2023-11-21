@@ -8,6 +8,8 @@
         <script src="javascript/javascript.js"></script>
         <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
         <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Career in Data & Analytics</title>    
         <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
         <meta name = "description" content = "Pierre Marionneau's personal website, hosting my resume and my data and analytics projects">
         <!-- this element specifies the document's character encoding -->
@@ -20,7 +22,7 @@
         <meta http-equiv='expires' content='0'> 
         <meta http-equiv='pragma' content='no-cache'>
         <!-- title tag, allowing to give a name to the page in the browser -->
-        <title>Pierre Marionneau - Data and Analytics Professional</title>        
+            
         <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
         <script>
@@ -33,24 +35,25 @@
 
 <!-- section "navigation"-->
     <header>
-        <div class = "header_section">
-            <div class = "navigation_section">
-                <button onclick="myFunction()" class = "navigation_button">
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="myFunction()" class = "navigation-button">
                     <i class="fa fa-bars"></i>
                 </button>
-                <div id = "navigation_menu" class = "navigation_menu">
-                    <ul class = "navigation_list"> 
-                        <li class = "navigation_item"><a href = "index.html">Home</a></li>
-                        <li class = "navigation_item"><a href = "projects.html">Projects</a></li>
-                        <li class = "navigation_item"><a href = "resume.html">Resume</a></li>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list"> 
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "projects.html">Projects</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
                     </ul>
                 </div>
             </div>
-            <div class = "social_network_section">
-                <ul class = "social_network_list">
-                    <li class = "social_buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
-                    <li class = "social_buttons"><a href="https://github.com/highxsky/" class="fa fa-github" alt = "GitHub"></a></li>
-                    <li class = "social_buttons"><a href="mailto:marionneaupierre@proton.me" class="fa fa-envelope" alt = "Email"></a></li>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" class="fa fa-envelope" alt = "Email"></a></li>
                 </ul>
             </div>
 
@@ -60,13 +63,18 @@
     <body>
 
 <!--  block -->
-   <div id = "content" class = "container telus top-content">
+   <div id = "content" class = "container block top-content">
         <div class = "sub-container">
-            <div class = "telus-image">
-                <img src = "imgs/Telus office 2.jpg" alt = "Telus - Data Analyst" class = "telus-img">
+            <div class = "block-image">
+                <img src = "imgs/Telus.jpg" alt = "Telus - Business Consultant" class = "block-img">
+                <div class = "overlay">
+                    <div class = "text-overlay">
+                        Telus - Business Consultant
+                    </div>
+                </div>
             </div>
-            <div class = "telus-text">
-                <h1>Telus - Data Analyst</h1>
+            <div class = "block-text">
+                <h1>Telus - Business Consultant</h1>
                 <p>
                     I joined Telus in 2022, as a Data Analyst, in Vancouver, BC (Canada).
                 </p>
@@ -86,12 +94,17 @@
     </div>
 
 <!--  block -->
-    <div class = "container kpmg">
+    <div class = "container block">
         <div class = "sub-container">
-            <div class = "kpmg-image">
-                <img src = "imgs/kpmg 4.jpg" alt = "KPMG - Senior Consultant" class = "kpmg-img">
+            <div class = "block-image">
+                <img src = "imgs/KPMG.jpg" alt = "KPMG - Senior Consultant" class = "block-img">
+                <div class = "overlay">
+                    <div class = "text-overlay">
+                        KPMG - Senior consultant
+                    </div>
+                </div>
             </div>
-            <div class = "kpmg-text">
+            <div class = "block-text">
                 <h1>KPMG - Senior consultant</h1>
                 <p>
                     I have worked for over 4 years (2018-2022) at KPMG Paris (France), as a Data & Analytics Senior Consultant.
@@ -115,12 +128,17 @@
     </div>
 
 <!--  block -->
-    <div class = "container bnpp">
+    <div class = "container block">
         <div class = "sub-container">
-            <div class = "bnpp-image">
-                <img src = "imgs/bnpp 4.jpg" alt = "BNPP - Project manager" class = "bnpp-img">
+            <div class = "block-image">
+                <img src = "imgs/BNP Paribas.jpg" alt = "BNPP - Project manager" class = "block-img">
+                <div class = "overlay">
+                    <div class = "text-overlay">
+                        BNP Paribas - Project manager
+                    </div>
+                </div>
             </div>
-            <div class = "bnpp-text">
+            <div class = "block-text">
                 <h1>BNP Paribas - Project manager</h1>
                 <p>
                     I have worked at BNP Paribas for one year, before graduating, in 2017, within the Risk branch.
@@ -137,7 +155,7 @@
 
     <footer>
 
-        <div class = "copyright_and_design">
+        <div class = "copyright-and-design">
             <p>© Pierre Marionneau</p>
             <p>Designed by me, using HTML, CSS and JS</p>
         </div>

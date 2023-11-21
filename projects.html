@@ -1,7 +1,28 @@
 <!DOCTYPE html>
-<html>
+
+<html lang = "fr-FR">
     <head>
-        <title>WORK IN PROGRESS!</title>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="javascript/javascript.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's personal website, hosting my resume and my data and analytics projects">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "data analyst, senior data analyst, data and analytics, consultant, pierre marionneau">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,7 +31,77 @@
         gtag('config', 'G-SJWSDMSVZF');
         </script>
     </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="myFunction()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "projects.html">Projects</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
     <body>
-        <h1>Website section in progress</h1>
+
+<!--  block -->
+   <div id = "content" class = "container block top-content">
+        <div class = "sub-container">
+            <div class = "block-image">
+                <img src = "imgs/Real Madrid.jpg" alt = "Real Madrid - Hala Madrid y nada mas!" class = "block-img">
+                <div class = "overlay">
+                    <div class = "text-overlay">
+                        Real Madrid - Hala y nada mas!
+                    </div>
+                </div>
+            </div>
+            <div class = "block-text project-title">
+                <h1>Football data analysis</h1>
+                <h2>Project in progress</h2>
+                <p>
+                    For this project, I chose to mix two things I like: data analysis and Real Madrid.
+                </p>
+                <p>
+                    I have retrieved football data from a Kaggle challenge, stored as a local database (SQLite). 
+                    I then worked my way through it with python and SQL in a notebook, to query and filter the data that I wanted.
+                    Finally, I have built visualizations with Power BI, my favorite data viz tool.
+                </p>
+            </div>
+            <div class = "block-tags">
+                <ul>
+                    <li>Python</li>
+                    <li>SQL</li>  
+                    <li>Power BI</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     </body>
+
+    <footer>
+
+        <div class = "copyright-and-design">
+            <p>© Pierre Marionneau</p>
+            <p>Designed by me, using HTML, CSS and JS</p>
+        </div>
+    </footer>
+
 </html>

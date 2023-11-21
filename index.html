@@ -8,6 +8,8 @@
         <script src="javascript/javascript.js"></script>
         <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
         <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Consultant</title>
         <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
         <meta name = "description" content = "Pierre Marionneau's personal website, hosting my resume and my data and analytics projects">
         <!-- this element specifies the document's character encoding -->
@@ -20,7 +22,6 @@
         <meta http-equiv='expires' content='0'> 
         <meta http-equiv='pragma' content='no-cache'>
         <!-- title tag, allowing to give a name to the page in the browser -->
-        <title>Pierre Marionneau - Data and Analytics Professional</title>
         <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
@@ -34,24 +35,25 @@
 
 <!-- section "navigation"-->
     <header>
-        <div class = "header_section">
-            <div class = "navigation_section">
-                <button onclick="myFunction()" class = "navigation_button">
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="myFunction()" class = "navigation-button">
                     <i class="fa fa-bars"></i>
                 </button>
-                <div id = "navigation_menu" class = "navigation_menu">
-                    <ul class = "navigation_list"> 
-                        <li class = "navigation_item"><a href = "index.html">Home</a></li>
-                        <li class = "navigation_item"><a href = "projects.html">Projects</a></li>
-                        <li class = "navigation_item"><a href = "resume.html">Resume</a></li>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list"> 
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "projects.html">Projects</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
                     </ul>
                 </div>
             </div>
-            <div class = "social_network_section">
-                <ul class = "social_network_list">
-                    <li class = "social_buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
-                    <li class = "social_buttons"><a href="https://github.com/highxsky/" class="fa fa-github" alt = "GitHub"></a></li>
-                    <li class = "social_buttons"><a href="mailto:marionneaupierre@proton.me" class="fa fa-envelope" alt = "Email"></a></li>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" class="fa fa-envelope" alt = "Email"></a></li>
                 </ul>
             </div>
 
@@ -61,51 +63,53 @@
     <body>
 
 <!-- "presentation"-->
-<div id = "content" class = "container skipps">
+<div id = "content" class = "container block">
     <div class = "sub-container">
-        <div class = "skipps-image">
+        <div class = "block-image">
             <!-- <a href = "aboutme.html"> -->
-                <img src = "imgs/aboutmeimg.jpg" alt = "Photo de présentation" class = "skipps-img">
+                <img src = "imgs/Pierre Marionneau.jpg" alt = "Pierre Marionneau" class = "block-img">
                 <div class = "overlay">
-                    <div class = "text_overlay">
+                    <div class = "text-overlay">
                         About me
                     </div>
                 </div>
             </a>
         </div>
-        <div class = "skipps-text">
-            <h1>About me</h1>
+        <div class = "block-text">
+            <h1>About</h1>
             <p>
-                Hi, my name is Pierre, I am a Data Analyst at Telus, Vancouver (BC).
-                Welcome to my professional website!
+                My name is Pierre, I am a Data Analyst at Telus, Vancouver (BC, Canada).
             </p>
             <p>
-                Here, you can find out more about me, my work experiences, my skills and the projects I worked on.
+                I have designed this website from scratch.
+                Here, you can find out more about me, my skills and my career so far.
+                You can also view the projects that I work on and read my data blog, where I share points of view, insights and practical tips and tricks.
             </p>
         </div>
     </div>
 </div>
 
 <!--  projects -->
-<div class = "container skipps">
+<div class = "container block">
     <div class = "sub-container">
-        <div class = "skipps-image">
+        <div class = "block-image">
             <a href = "projects.html">
-                <img src = "imgs/data 1.jpg" alt = "KPMG - Senior Consultant" class = "skipps-img">
+                <img src = "imgs/data portfolio.jpg" alt = "Data & Analytics projects portfolio" class = "block-img">
                 <div class = "overlay">
-                    <div class = "text_overlay">
-                        
+                    <div class = "text-overlay">
+                        Portfolio
                     </div>
                 </div>
             </a>
         </div>
-        <div class = "skipps-text">
-            <h1>Data & Analytics projects</h1>
+        <div class = "block-text">
+            <h1>Portfolio</h1>
             <p>
-                I like taking on new data challenges, whether it is trying new tools, testing new programming functions or analyzing data and uncovering insights!
+                In this section you can discover my portfolio of data & analytics projects.
             </p>
             <p>
-                Check out some of my projects: personal finance data processing and analysis, football data analysis, review of python packages...
+                I like taking on new data challenges and try to follow up with latest trends!
+                Whether it is analyzing data and uncovering insights, testing new tools or new python packages, its all in there!</p>
             </p>
             <a href = "projects.html" class = "button">
                 Discover my projects
@@ -115,28 +119,57 @@
 </div>
 
 <!--  resume -->
-<div class = "container skipps">
+<div class = "container block">
     <div class = "sub-container">
-        <div class = "skipps-image">
+        <div class = "block-image">
             <a href = "resume.html">
-                <img src = "imgs/resume 1.jpg" alt = "KPMG - Senior Consultant" class = "skipps-img">
+                <img src = "imgs/Resume.jpg" alt = "Pierre Marionneau's resume" class = "block-img">
                 <div class = "overlay">
-                    <div class = "text_overlay">
-                        
+                    <div class = "text-overlay">
+                        Resume
                     </div>
                 </div>
             </a>
         </div>
-        <div class = "skipps-text">
-            <h1>My resume</h1>
+        <div class = "block-text">
+            <h1>Resume</h1>
             <p>
-                In this section, I share a little bit about me as a Data and Analytics professional. 
+                
             </p>
             <p>
-                You can also check out my LinkedIn page, download my resume and contact me if you have opportunities you think I would be interested in.
+                I have worked for over 5 years in the Data & Analytics industry, as a consultant and as a data analyst.
+                In this section, you can find out more about me, my skills and my career.
+            </p>
+            <p>
+                If you want to know more, please check out my LinkedIn profile and feel free to reach out if you have opportunities you want to talk about.
             </p>
             <a href = "resume.html" class = "button">
-                View more
+                Check out my profile
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--  resume -->
+<div class = "container block">
+    <div class = "sub-container">
+        <div class = "block-image">
+            <a href = "blog.html">
+                <img src = "imgs/blog.jpg" alt = "Data & Analytics blog" class = "block-img">
+                <div class = "overlay">
+                    <div class = "text-overlay">
+                        Blog
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class = "block-text">
+            <h1>Blog</h1>
+            <p>
+                In this section, I share news related to data and analytics and express personal opinions on the industry overall.
+            </p>
+            <a href = "resume.html" class = "button">
+                Read my blog
             </a>
         </div>
     </div>
@@ -146,7 +179,7 @@
 
     <footer>
 
-        <div class = "copyright_and_design">
+        <div class = "copyright-and-design">
             <p>© Pierre Marionneau</p>
             <p>Website designed by myself!</p>
         </div>

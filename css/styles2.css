@@ -1,0 +1,332 @@
+
+  :root {
+  --lightest-green: #f0f7da;
+  --light-green: #c9df8a;
+  --green: #77ab59;
+  --dark-green: #36802d;
+  --darkest-green: #234d20;
+}
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: local(''),
+        url('fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
+  }
+
+  html { /* scroll behavior set to smooth to ensure transitions are soft and not rough when scrolling */
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif; /* use of a font stack in case the web browser doesn't support a specific font */
+    margin: 0;
+    padding: 0;
+  }
+
+/* styling for buttons on webpages */
+.button { 
+  align-self: center;
+  padding: 5px 5px;
+  margin: 5px 5px;
+  background: var(--darkest-green);
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+/* styling for buttons on webpages, when hovering */
+.button:hover { 
+  background: var(--green);
+}
+
+/* category tags used to filter content */
+.category-tag > a { 
+  text-decoration: none;
+  font-size: 10px;
+}
+
+/* ads a # just before the tags */
+.category-tag > a::before { 
+  content: "#";
+}
+
+.fa { /* these are the icons related to each social media */
+  padding: 5px;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.fa-bars {
+  color: white;
+  background: #B3B6B7;
+}
+
+.fa-github {
+  background: #B3B6B7;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #B3B6B7;
+  color: white;
+}
+
+.fa-envelope {
+  background: #B3B6B7;
+  color: white;
+}
+
+.fa-arrow-right {
+  color: white;
+}
+
+/* these are the icons related to each social media */
+.fa-twitter:hover, .fa-linkedin:hover, .fa-envelope:hover .fa-bars:hover { 
+  background-color: var(--green);
+  color: var(--darkest-green);
+}
+
+.fa-circle {
+  color: var(--dark-green);
+  vertical-align: middle;
+}
+
+.fa-passport {
+  color: white;
+}
+
+.fa-location-dot {
+  color: white;
+}
+
+.fa-code {
+  color: white;
+}
+
+.fa-mobile-screen {
+  color: white;
+}
+
+.fa-paper-plane {
+  color: white;
+}
+
+.fa-mobile-screen:hover, .fa-code:hover, .fa-paper-plane:hover, .fa-location-dot:hover {
+  color:var(--light-green);
+}
+
+.header_section {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  background-color: var(--darkest-green);
+  top: 0;
+  position:fixed;
+  width: 100%;
+  z-index: 1;
+  justify-content: space-between;
+  max-height: 400px;
+}
+
+.navigation_button {
+  background: none;
+  display: flex;
+  flex-basis: 10%;
+  justify-content:flex-start;
+  align-items: center;
+	padding: 0;
+  margin: 1vmin;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  border: none;
+}
+
+.navigation_section {
+  position: relative;
+  display: inline-block;
+}
+
+.navigation_menu {
+  display:none;
+  position: relative;
+  height:auto;
+  justify-content:flex-start;
+  margin: 1vmin;
+  padding:0;
+  width: 100%;
+}
+
+.navigation_list {
+  display: block;
+  flex-direction: column;
+  justify-content:flex-end;
+  margin: 0;
+  padding: 2vmin 0vmin 0vmin 0vmin;
+}
+
+.navigation_item a {
+  display: block;
+  color: whitesmoke;
+  text-decoration: none;
+  padding: 0.5vmin 0vmin;
+  text-align: left;
+}
+
+.navigation_item a:hover {
+  background-color: var(--green);
+}
+
+.show {
+  display:block;
+}
+
+.rotate {
+  transform: rotate(90deg); /* You can adjust the rotation angle as needed */
+  transition: transform 0.05s;
+}
+
+.social_network_section { /* third item of the header section, i.e. the social media links  */
+  align-items:flex-end;
+  justify-items:center;
+  flex-basis:30%;
+  text-align:center;
+  margin:1vmin;
+  padding:0;
+}
+
+.social_network_list { /* social media section (twitter, linkedin...), aka social network list */
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.social_buttons { /* buttons of the social media section (twitter, linkedin...) */
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 1%;
+  margin: 0;
+}
+
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+  border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
+}
+
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position:absolute;
+  
+  /* vertically center */
+  top:50%;
+  transform:translateY(-50%);
+  
+  /* move to right */
+  left:100%;
+  margin-left:15px; /* and add a small left margin */
+  
+  /* basic styles */
+  width:200px;
+  padding:10px;
+  border-radius:10px;
+  background:#000;
+  color: #fff;
+  text-align:center;
+
+  display:none; /* hide by default */
+}
+
+.tooltip:hover:before {
+  display:block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-width: 80%;
+}
+
+.containerr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+
+.sub-containerr {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-width: 80%;
+}
+
+.sbuk {
+  background-color: var(--lightest-green);
+  padding-top: calc(45px + 1%);
+}
+
+.sbuk-text {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  overflow: hidden;
+}
+
+.sbuk-text > h1 {
+  font-size: 18px;
+  text-align: center;
+  margin: 0.5em 0em;
+}
+
+.sbuk-text > p {
+  font-size: 12px;
+  text-align: justify;
+  margin: 0 0 1em 0;
+}
+
+.sbuk-text > ul {
+  list-style:disc;
+  font-size: 12px;
+  list-style-position: outside;
+  text-align: justify;
+  margin: 0 0 0 0;
+}
+
+.sbuk-text > a {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.sbuk-image {
+  display: flex;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sbuk-img {
+  display: flex;
+  object-fit: cover;
+  overflow: hidden;    
+  max-width: 100%;
+  max-height: 100%;
+}

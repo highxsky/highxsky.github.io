@@ -1,71 +1,38 @@
-/*
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-
-CSS CUSTOM PROPERTIES
-
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-*/
-
-  :root {
-  --lightest-green: #f0f7da;
-  --light-green: #c9df8a;
-  --green: #77ab59;
-  --dark-green: #36802d;
-  --darkest-green: #234d20;
+:root {
+  --lightest-blue: #f8f9fe;
+  --light-blue: #e1e7f6;
+  --blue: #698ae8;
+  --dark-blue: #353ba7;
+  --darkest-blue: #2d4286;
 }
 
-/*
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
+@font-face {
+  font-family: 'Montserrat';
+  src: local(''),
+      url('fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
+}
 
-GENERAL STYLING
+html { /* scroll behavior set to smooth to ensure transitions are soft and not rough when scrolling */
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
 
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-*/
-
-  @font-face {
-    font-family: 'Montserrat';
-    src: local(''),
-        url('fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
-  }
-
-  html { /* scroll behavior set to smooth to ensure transitions are soft and not rough when scrolling */
-    scroll-behavior: smooth;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif; /* use of a font stack in case the web browser doesn't support a specific font */
-    margin: 0;
-    padding: 0;
-  }
-
-/*
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-
-BUTTONS
-
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-*/
+body {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif; /* use of a font stack in case the web browser doesn't support a specific font */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 /* styling for buttons on webpages */
 .button { 
   align-self: center;
   padding: 5px 5px;
   margin: 5px 5px;
-  background: var(--darkest-green);
+  background: var(--darkest-blue);
   color: white;
   text-decoration: none;
   font-size: 12px;
@@ -74,7 +41,7 @@ BUTTONS
 
 /* styling for buttons on webpages, when hovering */
 .button:hover { 
-  background: var(--green);
+  background: var(--blue);
 }
 
 /* category tags used to filter content */
@@ -88,19 +55,7 @@ BUTTONS
   content: "#";
 }
 
-/*
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-
-FONT AWESOME
-
---------------------------------------------------------
---------------------------------------------------------
---------------------------------------------------------
-*/
-
-.fa { /* these are the icons related to each social media */
+.fa {
   padding: 5px;
   text-align: center;
   justify-content: center;
@@ -109,21 +64,21 @@ FONT AWESOME
 
 .fa-bars {
   color: white;
-  background: #B3B6B7;
+  background: none;
 }
 
 .fa-github {
-  background: #B3B6B7;
+  background: none;
   color: white;
 }
 
 .fa-linkedin {
-  background: #B3B6B7;
+  background: none;
   color: white;
 }
 
 .fa-envelope {
-  background: #B3B6B7;
+  background: none;
   color: white;
 }
 
@@ -133,60 +88,16 @@ FONT AWESOME
 
 /* these are the icons related to each social media */
 .fa-github:hover, .fa-linkedin:hover, .fa-envelope:hover .fa-bars:hover { 
-  background-color: var(--green);
-  color: var(--darkest-green);
+  background-color: var(--blue);
+  color: var(--darkest-blue);
 }
 
-.fa-circle {
-  color: var(--dark-green);
-  vertical-align: middle;
-}
-
-.fa-passport {
-  color: white;
-}
-
-.fa-location-dot {
-  color: white;
-}
-
-.fa-code {
-  color: white;
-}
-
-.fa-mobile-screen {
-  color: white;
-}
-
-.fa-paper-plane {
-  color: white;
-}
-
-.fa-mobile-screen:hover, .fa-code:hover, .fa-paper-plane:hover, .fa-location-dot:hover {
-  color:var(--light-green);
-}
-
-/* 
-NEW - NAVIGATION SECTION
-- PROPERTIES
-  --> width: bar stretched to the whole page width
-  --> position: fixed: stays on top
-  --> z-index: menu will be above any other object
-*/
-
-/* 
-- PROPERTIES
-  --> flex-basis: 20% --> takes 20% of the screen width
-  --> position: fixed: stays on top
-  --> z-index: menu will be above any other object 
-  */
-
-.header_section {
+.header-section {
   display: flex;
   flex-direction: row;
   margin: 0;
   padding: 0;
-  background-color: var(--darkest-green);
+  background-color: var(--darkest-blue);
   top: 0;
   position:fixed;
   width: 100%;
@@ -195,7 +106,7 @@ NEW - NAVIGATION SECTION
   max-height: 400px;
 }
 
-.navigation_button {
+.navigation-button {
   background: none;
   display: flex;
   flex-basis: 10%;
@@ -209,12 +120,12 @@ NEW - NAVIGATION SECTION
   border: none;
 }
 
-.navigation_section {
+.navigation-section {
   position: relative;
   display: inline-block;
 }
 
-.navigation_menu {
+.navigation-menu {
   display:none;
   position: relative;
   height:auto;
@@ -224,7 +135,7 @@ NEW - NAVIGATION SECTION
   width: 100%;
 }
 
-.navigation_list {
+.navigation-list {
   display: block;
   flex-direction: column;
   justify-content:flex-end;
@@ -232,7 +143,7 @@ NEW - NAVIGATION SECTION
   padding: 2vmin 0vmin 0vmin 0vmin;
 }
 
-.navigation_item a {
+.navigation-item a {
   display: block;
   color: whitesmoke;
   text-decoration: none;
@@ -240,8 +151,8 @@ NEW - NAVIGATION SECTION
   text-align: left;
 }
 
-.navigation_item a:hover {
-  background-color: var(--green);
+.navigation-item a:hover {
+  background-color: var(--blue);
 }
 
 .show {
@@ -253,16 +164,7 @@ NEW - NAVIGATION SECTION
   transition: transform 0.05s;
 }
 
-/* 
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
- */
-
-.social_network_section { /* third item of the header section, i.e. the social media links  */
+.social-network-section { /* third item of the header section, i.e. the social media links  */
   align-items:flex-end;
   justify-items:center;
   flex-basis:30%;
@@ -271,7 +173,7 @@ NEW - NAVIGATION SECTION
   padding:0;
 }
 
-.social_network_list { /* social media section (github, linkedin...), aka social network list */
+.social-network-list { /* social media section (github, linkedin...), aka social network list */
   display: flex;
   flex-wrap: wrap;
   height: auto;
@@ -281,46 +183,12 @@ NEW - NAVIGATION SECTION
   padding: 0;
 }
 
-.social_buttons { /* buttons of the social media section (github, linkedin...) */
+.social-buttons { /* buttons of the social media section (github, linkedin...) */
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   padding: 1%;
   margin: 0;
-}
-
-/* ||| Tooltip styling */
-
-.tooltip {
-  position: relative; /* making the .tooltip span a container for the tooltip text */
-  border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
-}
-
-.tooltip:before {
-  content: attr(data-text); /* here's the magic */
-  position:absolute;
-  
-  /* vertically center */
-  top:50%;
-  transform:translateY(-50%);
-  
-  /* move to right */
-  left:100%;
-  margin-left:15px; /* and add a small left margin */
-  
-  /* basic styles */
-  width:200px;
-  padding:10px;
-  border-radius:10px;
-  background:#000;
-  color: #fff;
-  text-align:center;
-
-  display:none; /* hide by default */
-}
-
-.tooltip:hover:before {
-  display:block;
 }
 
 /* ||| Introduction section styling */
@@ -334,10 +202,10 @@ NEW - NAVIGATION SECTION
   max-width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: var(--light-green);
+  background-color: var(--dark-blue);
 }
 
-.text_overlay {
+.text-overlay {
   display: flex;
   color: whitesmoke;
   position: absolute;
@@ -351,12 +219,6 @@ NEW - NAVIGATION SECTION
   transform: translate(-50%, -50%);
 }
 
-.intro_item:hover .overlay {
-  opacity: 1;
-}
-
-/* ||| Homepage containers styling */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -368,16 +230,18 @@ NEW - NAVIGATION SECTION
   display: flex;
   flex-direction: column;
   align-self: center;
-  /* gap: 2vw; */
-  /* margin: 1vh max(20vw, 5vw); space between the different containers */
   max-width: 80%; /* space between the different containers */
 }
 
 .container:nth-child(odd) {
-  background: var(--lightest-green)
+  background: var(--lightest-blue)
 }
 
-.skipps-image {
+.container:nth-child(2) {
+  padding-top: calc(45px + 1%);
+}
+
+.block-image {
   display: flex;
   overflow: hidden;
   margin-left: auto;
@@ -385,7 +249,7 @@ NEW - NAVIGATION SECTION
   position: relative;
 }
 
-.skipps-img {
+.block-img {
   display: flex;
   object-fit: cover; 
   overflow: hidden;    
@@ -393,11 +257,11 @@ NEW - NAVIGATION SECTION
   max-height: 100%;
 }
 
-.skipps-image:hover .overlay {
-  opacity: 1;
+.block-image:hover .overlay {
+  opacity: 0.5;
 }
 
-.skipps-text {
+.block-text {
   display: flex;
   flex-direction: column;
   flex: 3;
@@ -405,386 +269,91 @@ NEW - NAVIGATION SECTION
   overflow: hidden;
 }
 
-.skipps-text > h1 {
-  font-size: 18px;
+.block-text > h1 {
+  font-size: 1em;
+  text-align: left;
+  margin: 0.5em 0em;
+}
+
+.block-text > h2 {
+  font-size: 12px;
   text-align: center;
   margin: 0.5em 0em;
 }
 
-.skipps-text > p {
-  font-size: 12px;
+
+.block-text > p {
+  font-size: 0.8em;
   text-align: justify;
   margin: 0 0 1em 0;
 }
 
-.skipps-text > ul {
-  list-style:disc;
+.block-text > ul {
   font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
+  margin: 0;
+  padding: 0;
 }
 
-.skipps-text > a {
+.block-text > ul > li {
+  font-size: 12px;
+  list-style: square inside;
+  display: list-item;
+}
+
+.block-text > a {
   text-align: center;
   justify-content: center;
   align-items: center;
 }
 
-.copyright_and_design {
+.block-tags {
+  display: flex;
+  width: auto;
+  flex: 3;
+  justify-content: left;
+  margin: 1vmin 0vmin;
+}
+
+.block-tags > ul {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.block-tags > ul > li {
+  display: inline-block;
+  background: var(--light-blue);
+  border: 1px solid var(--dark-blue);
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 1vmin;
+  margin: 0vmin 2vmin 0vmin 0vmin;
+}
+
+.project-title > h1 {
+  text-align: left;
+}
+
+.project-title > h2 {
+  text-align: left;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.copyright-and-design {
   display: flex;
   justify-content: space-between;
   margin: 0;
   padding: 0;
-  background-color: var(--darkest-green);
+  background-color: var(--darkest-blue);
 }
 
-.copyright_and_design > p {
+.copyright-and-design > p {
   font-size: 10px;
   margin: 0.5vw 0.5vh;
   color: white;
 }
-
-
-/* ||| Presentation section styling */
-
-/* .presentation {
-  background-color: var(--lightest-green);
-  padding-top: calc(45px + 1%);
-}
-
-.presentation-text {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  overflow: hidden;
-}
-
-.presentation-text > h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0.5em 0em;
-}
-
-.presentation-text > p {
-  font-size: 12px;
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-.presentation-text > ul {
-  list-style:disc;
-  font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
-}
-
-.presentation-text > a {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.presentation-image {
-  display: flex;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.presentation-img {
-  display: flex;
-  object-fit: cover;
-  overflow: hidden;    
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.projects-text {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  overflow: hidden;
-}
-
-.projects-text > h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0.5em 0em;
-}
-
-.projects-text > p {
-  font-size: 12px;
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-.projects-text > ul {
-  list-style:disc;
-  font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
-}
-
-.projects-text > a {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.projects-image {
-  display: flex;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.projects-img {
-  display: flex;
-  object-fit: cover;
-  overflow: hidden;    
-  max-width: 100%;
-  max-height: 100%;
-} */
-
-/* ||| Resume section styling */
-
-/* .resume {
-  background-color: var(--lightest-green);
-}
-
-.resume-text {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  overflow: hidden;
-}
-
-.resume-text > h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0.5em 0em;
-}
-
-.resume-text > p {
-  font-size: 12px;
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-.resume-text > ul {
-  list-style:disc;
-  font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
-}
-
-.resume-text > a {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.resume-image {
-  display: flex;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.resume-img {
-  display: flex;
-  object-fit: cover;
-  overflow: hidden;    
-  max-width: 100%;
-  max-height: 100%;
-} */
-
-/* ||| Telus */
-
-/* .telus {
-  background-color: var(--lightest-green);
-  padding-top: calc(45px + 1%);
-}
-
-.telus-text {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  overflow: hidden;
-}
-
-.telus-text > h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0.5em 0em;
-}
-
-.telus-text > p {
-  font-size: 12px;
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-.telus-text > ul {
-  list-style:disc;
-  font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
-}
-
-.telus-text > a {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.telus-image {
-  display: flex;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.telus-img {
-  display: flex;
-  object-fit: cover; 
-  overflow: hidden;    
-  max-width: 100%;
-  max-height: 100%;
-} */
-
-/* ||| KPMG */
-
-/* .kpmg {
-  background-color: white;
-} */
-
-/* 
-properties
-- position: relative --> to manage overlay effect 
-- margin-left / right --> to automatically position in the middle (given its in a flex display)
-*/
-/* .kpmg-image {
-  display: flex;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-
-.kpmg-img {
-  display: flex;
-  object-fit: cover; 
-  overflow: hidden;    
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.kpmg-image:hover .overlay {
-  opacity: 1;
-}
-
-
-.kpmg-text {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  overflow: hidden;
-}
-
-.kpmg-text > h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0.5em 0em;
-}
-
-.kpmg-text > p {
-  font-size: 12px;
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-.kpmg-text > ul {
-  list-style:disc;
-  font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
-}
-
-.kpmg-text > a {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* ||| BNPP */
-
-/* .bnpp {
-  background-color: var(--lightest-green);
-} */
-
-/* 
-properties
-- position: relative --> to manage overlay effect 
-- margin-left / right --> to automatically position in the middle (given its in a flex display)
-*/
-/* .bnpp-image {
-  display: flex;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-
-.bnpp-img {
-  display: flex;
-  object-fit: cover; 
-  overflow: hidden;    
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.bnpp-image:hover .overlay {
-  opacity: 1;
-}
-
-
-.bnpp-text {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  /* margin: 1vw; */
-  /* overflow: hidden;
-}
-
-.bnpp-text > h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0.5em 0em;
-}
-
-.bnpp-text > p {
-  font-size: 12px;
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-.bnpp-text > ul {
-  list-style:disc;
-  font-size: 12px;
-  list-style-position: outside;
-  text-align: justify;
-  margin: 0 0 0 0;
-}
-
-.bnpp-text > a {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-} */
