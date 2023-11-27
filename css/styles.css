@@ -12,20 +12,29 @@
       url('fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
 }
 
-html { /* scroll behavior set to smooth to ensure transitions are soft and not rough when scrolling */
+/* 
+scroll-behavior : smooth --> to ensure transitions are soft and not rough when scrolling 
+font-size: 18px --> root element is 18px for mobile
+*/
+html { 
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
+/* 
+font-family: font stack in case web browser does not support a specific font
+*/
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif; /* use of a font stack in case the web browser doesn't support a specific font */
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+
 
 /* styling for buttons on webpages */
 .button { 
@@ -35,7 +44,7 @@ body {
   background: var(--darkest-blue);
   color: white;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 1rem;
   border-radius: 10px;
 }
 
@@ -44,22 +53,12 @@ body {
   background: var(--blue);
 }
 
-/* category tags used to filter content */
-.category-tag > a { 
-  text-decoration: none;
-  font-size: 10px;
-}
-
-/* ads a # just before the tags */
-.category-tag > a::before { 
-  content: "#";
-}
-
 .fa {
   padding: 5px;
   text-align: center;
   justify-content: center;
   text-decoration: none;
+  font-size: 1.5rem;
 }
 
 .fa-bars {
@@ -114,7 +113,6 @@ body {
   align-items: center;
 	padding: 0;
   margin: 1vmin;
-	font: inherit;
 	cursor: pointer;
 	outline: inherit;
   border: none;
@@ -209,7 +207,6 @@ body {
   display: flex;
   color: whitesmoke;
   position: absolute;
-  font-size: 12px;
   font-weight: 800;
   text-align: center;
   top: 50%;
@@ -234,11 +231,11 @@ body {
 }
 
 .container:nth-child(odd) {
-  background: var(--lightest-blue)
+  background: var(--light-blue)
 }
 
 .container:nth-child(2) {
-  padding-top: calc(45px + 1%);
+  padding-top: calc(55px + 1%);
 }
 
 .block-image {
@@ -270,32 +267,30 @@ body {
 }
 
 .block-text > h1 {
-  font-size: 1em;
+  font-size: 1.3rem;
   text-align: left;
   margin: 0.5em 0em;
 }
 
 .block-text > h2 {
-  font-size: 12px;
+  font-size: 1.15rem;
   text-align: center;
   margin: 0.5em 0em;
 }
 
 
 .block-text > p {
-  font-size: 0.8em;
   text-align: justify;
   margin: 0 0 1em 0;
 }
 
 .block-text > ul {
-  font-size: 12px;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 }
 
 .block-text > ul > li {
-  font-size: 12px;
   list-style: square inside;
   display: list-item;
 }
@@ -306,30 +301,32 @@ body {
   align-items: center;
 }
 
+/* .block-tags {
+  display: flex;
+
+  margin: 1vmin 0vmin;
+} */
+
 .block-tags {
   display: flex;
-  width: auto;
-  flex: 3;
   justify-content: left;
-  margin: 1vmin 0vmin;
-}
-
-.block-tags > ul {
-  display: flex;
-  justify-content: space-between;
   width: auto;
   margin: 0;
   padding: 0;
 }
 
-.block-tags > ul > li {
+.block-tags > li {
   display: inline-block;
-  background: var(--light-blue);
-  border: 1px solid var(--dark-blue);
-  border-radius: 5px;
-  font-size: 12px;
-  padding: 1vmin;
-  margin: 0vmin 2vmin 0vmin 0vmin;
+  background: var(--blue);
+  color: white;
+  border-radius: 10px;
+  padding: 5px 5px;
+  margin: 5px 5px;
+}
+
+
+.block-text.project-title .block-tags > li {
+  display: inline-block;
 }
 
 .project-title > h1 {
@@ -353,7 +350,69 @@ footer {
 }
 
 .copyright-and-design > p {
-  font-size: 10px;
+  font-size: 0.65rem;
   margin: 0.5vw 0.5vh;
   color: white;
+}
+
+@media (min-width:600px) {
+
+  .button { 
+    align-self: start;
+    margin: 0;
+  }
+
+  .container:nth-child(odd) .sub-container {
+    display: flex;
+    flex-direction: row-reverse; /* Reverses the order of image and text */
+  }
+  
+  .container:nth-child(2) {
+    padding-top: calc(55px + 1%);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2%;
+  }
+  
+  .sub-container {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    width: 70%;
+    gap: 2vmin;
+    justify-content: center;
+    align-items: center;
+  }
+    
+  .block-image {
+    flex: 1;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  .block-img {
+    display: flex;
+    object-fit: cover; 
+    overflow: hidden;    
+    max-width: 100%;
+    max-height: 100%;
+  }
+   
+  .block-image:hover .overlay {
+    opacity: 0.5;
+  }
+  
+  .block-text {
+    flex: 1;
+    overflow: hidden;
+  }
+  
 }
