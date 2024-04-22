@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <link href="css/prism.css" rel="stylesheet">
+        <script src="js/prism.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's data project on personal finances (csv files)">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "pierre marionneau, data analysis, personal finance data, process csv files, financial management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class = "container-post block">
+            <div id = "content" class = "sub-container-post">
+                <div class = "blog">
+                    <h1>Reading PDF files with python</h1>
+                    <p>
+                        The project is hosted on github: check it out!
+                    </p>
+                    <a href = "https://github.com/highxsky/" target = "_blank" class = "button">Github link</a>
+                    <div class="separator"></div>
+                    <h2>Introduction</h2>
+                    <p>
+                        Analyzing financial data is a common use case to begin your data analytics career: you have a use case (analyzing your personal finances) and accessible data that you are familiar with (through your bank). You also have ideas of analysis to run (where is my money going, is my wealth increasing, etc..)
+                        <br>While many banks offer the possibility to extract your data in a structured format (excel, csv), it sometimes comes with limitations.
+                    </p>
+                    <p>
+                        My previous bank did not allow me to download all of my historical data as csv files.
+                        The only data I had were my monthly statements, available as PDF files.
+                        <br>With Python and the right packages, it is possible to extract data from PDF files and then analyze it.
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Approach</h2>
+                    <h3>1 - Testing <a href = "https://pypi.org/project/camelot-py/" target = "_blank">Camelot: "PDF table extraction for Humans"</a></h3>
+                    <p>
+                        First step was to experiment parsing data from a single PDF file and page, with a python library, camelot.
+                        I tested a few things and, after some trial and error, finally found how I needed to set my parameters to read a page properly.
+                        <br>Check out the library's website for your own requirements: it is very well documented!
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+def read_first_page(pdf_file, table_areas_first_page, column_positions):
+
+# output will be a table list and first page will have index 0
+table = camelot.read_pdf(
+    filepath = pdf_file,
+    pages = '1',
+    encoding = 'utf-8',
+    # stream to parse PDFs that have whitespaces between celles to simulate a table structure
+    flavor = 'stream'
+    # to detect the table, list with positions expressed in points 
+    table_areas = table_areas_first_page,
+    # to detect columns, list with positions expressed in points
+    columns = column_positions,
+)
+
+# table to dataframe
+first_page_df = table[0].df 
+# indicating page number in new column
+first_page_df.loc[:, 'file_page'] = 1 
+
+return first_page_df
+                        </code>
+                    </pre>
+                    <h3>2 - Finding patterns for automation</h3>
+                    <p>
+                        Second step was to analyze how the data was structured in my PDF files. For this, I identified where the data that I needed was in a bank statement.
+                        Then, I analyzed a few more bank statements, to check whether there was a pattern or not.
+                        Between the first page, the middle pages and the last pages, there were some slight differences. The table with data would begin or end at a higher or lower position (in pixels).
+                        <br>In the end, I needed to have 3 distinct treatments, to parse my PDF files into a single, clean csv file.
+                    </p>
+                    <pre>
+                        <code class="language-py">
+for key, value in dict.items():
+    file_path = value[0]
+    extraction_date = value[1]
+    account_number = value[2]
+    number_of_pages = value[3]
+
+    # reading first page data
+    first_page_df = fn.read_first_page(
+        file_path, 
+        cfg.table_areas_first_page, 
+        cfg.column_positions
+    )
+
+    # reading "inbetween" pages data
+    inbetween_pages_df = fn.read_inbetween_pages(
+        file_path, 
+        cfg.table_areas_inbetween_pages, 
+        cfg.column_positions, 
+        number_of_pages
+    )
+
+    # reading last page data
+    last_page_df = fn.read_last_page(
+        file_path, 
+        cfg.table_areas_last_page, 
+        cfg.column_positions, 
+        number_of_pages
+    )
+
+    # creating a list of dataframes
+    all_pages_dfs = [first_page_df, inbetween_pages_df, last_page_df]
+        
+    # cleaning each dataframe in the list
+    # and concatenating these into a single one
+    all_pages_cleaned_df = pd.concat(
+        [fn.clean_dataframe(df) for df in all_pages_dfs],
+        ignore_index=True
+    )
+
+                        </code>
+                    </pre>
+                    <h3>3 - Defining table areas in the PDF files</h3>
+                    <p>
+                        Third step was to define data areas for each required treatment (1st page, middle pages, last page).
+                        This meant taking actual measures, in pixels: where the table would start and end, on which position would a column start and end, etc.. 
+                        <br>This was a rather tedious task, especially because I had to find how to do that in the first place.
+                        Adobe Acrobat or Foxit Reader contain such features.
+                    </p>
+                    <img id="myImage" src="imgs/Bank statement example.png" alt="Example of a financial statement (anonymized)" onclick="openModal()">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>4 - Testing and validating the results</h3>
+                    <p>
+                        Fourth step, I had to build my script and test it at a bigger scale as I had hundreds of statements. 
+                        I took a few sample statements that I tested thoroughly, ultimately ensuring that the parsed data aligned with the source data.
+                        I ensured I had the expected number of transactions, that the dates and amounts were right.
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Conclusion</h2>
+                    <p>
+                       Camelot is a great python library to parse data out of PDF files. There are many features, that allow you to get the required result and integrate it within a larger project, e.g. processing and analyzing your bank statements.
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+
+    <div class = "copyright-and-design">
+        <p>© Pierre Marionneau</p>
+        <p>Designed by me, using HTML, CSS and JS</p>
+    </div>
+    </footer>
+
+</html>
+

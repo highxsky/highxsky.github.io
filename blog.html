@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's personal website, hosting my resume and my data and analytics projects">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "data analyst, senior data analyst, data and analytics, consultant, pierre marionneau">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <!--  block -->
+        <div id = "content" class = "container block top-content">
+            <div class = "sub-container">
+                <div class = "block-image">
+                    <img src = "imgs/Bank statement.png" alt = "Example of a PDF file" class = "block-img">
+                    <div class = "overlay">
+                        <div class = "text-overlay">
+                            Reading PDF files with python
+                        </div>
+                    </div>
+                </div>
+                <div class = "block-text project-title">
+                    <h1>
+                        Reading PDF files with python
+                    </h1>
+                    <ul class = "block-tags">
+                        <li>Python</li>
+                    </ul>
+                    <p>
+                        One of my first personal python projects: parsing data out of PDF bank statements.
+                    </p>
+                    <p>
+                        A classic for aspiring data analysts: analyzing your own financials. While it is often available in csv format, sometimes, all you have are PDF files that you need to parse.
+                        <br>I have discovered Camelot, a powerful python library to read PDF files.
+                    </p>
+                    <a href = "reading_pdf_with_python.html" class = "button">
+                        View more
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  block -->
+        <div id = "content" class = "container block">
+            <div class = "sub-container">
+                <div class = "block-image">
+                    <img src = "imgs/Professional website desktop.png" alt = "Pierre Marionneau's website on a desktop interface" class = "block-img">
+                    <div class = "overlay">
+                        <div class = "text-overlay">
+                            pierremarionneau.dev
+                        </div>
+                    </div>
+                </div>
+                <div class = "block-text project-title">
+                    <h1>
+                        Building my professional website
+                    </h1>
+                    <ul class = "block-tags">
+                        <li>HTML</li>
+                        <li>CSS</li>  
+                        <li>JavaScript</li>
+                    </ul>
+                    <p>
+                        My first project to be published had to be my professional website!
+                    </p>
+                    <p>
+                        I wanted to have my own space to showcase my projects and share my insights on the industry.
+                        Furthermore, being familiar with web-design (HTML, CSS, eventually JavaScript) is a very useful skill for aspiring data analysts, whether it is to build custom visualizations in Power BI or to do web scraping.
+                    </p>
+                    <a href = "building_my_personal_website.html" class = "button">
+                        View more
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    <footer>
+
+        <div class = "copyright-and-design">
+            <p>© Pierre Marionneau</p>
+            <p>Designed by me, using HTML, CSS and JS</p>
+        </div>
+    </footer>
+
+</html>
