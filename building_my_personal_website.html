@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <link href="css/prism.css" rel="stylesheet">
+        <script src="js/prism.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's data project on personal finances (csv files)">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "pierre marionneau, data analysis, personal finance data, process csv files, financial management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class = "container-post block">
+            <div id = "content" class = "sub-container-post">
+                <div class = "blog">
+                    <h1>Building my profesionnal website</h1>
+                    <p>
+                        The project is hosted on github: check it out!
+                    </p>
+                    <a href = "https://github.com/highxsky/highxsky.github.io/" target = "_blank" class = "button">Github link</a>
+                    <div class="separator"></div>
+                    <h2>Introduction</h2>
+                    <p>
+                        I wanted to have my own professional website, to showcase my data projects and share my thoughts on the industry here.
+                        I designed it from scratch with HTML, CSS and a bit of JavaScript.
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Approach</h2>
+                    <h3>1 - Process</h3>
+                    <p>
+                        This was an iterative process. I started by going through a HTML/CSS course and then started building a few web pages, to test different things (mainly flex layout and grid layout).
+                        I was not fully satisfied with the results, especially because it wasn't responsive enough.
+                        After a while, I decided to rebuild it from scratch and do things differently, and better.
+                        <br>I checked a few user experience and web marketing resources and have collected multiple user feedback.
+                        I also checked out a few websites that I thought were of good design, for inspiration.
+                        Finally, I elaborated a site plan on a canvas and and then started rebuilding my website.
+                        
+                    </p>
+                    <h3>2 - Features</h3>
+                    <p>
+                        This website is made of 3 components: HTML pages, CSS stylesheet for styling and Javascript code for animations.
+                        <br>It was built as mobile first and then adjusted to desktop, for better responsiveness. 
+                        Furthermore, web pages have Google tags for analytics purposes.
+                    </p>
+                    <h3>3 - Hosting</h3>
+                    <p>
+                        I bought a domain (pierremarionneau.dev) and hosted the website on GitHub, which has the advantage of being free and allow you to use a github domain name or your own.
+                    </p>
+                    <img id="myImage" src="imgs/Professional website mobile.png" alt="Overview of my professional website on a mobile device" onclick="openModal()">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <div class="separator"></div>
+                    <h2>Conclusion</h2>
+                    <p>
+                        Building a website is in my opinion a great project for aspiring data analysts, because it calls on a lot of useful skills, from web design (HTML, CSS, eventually JavaScript), user experience principes, using Google Analytics, content writing, etc..
+                        <br>It is accessible to most, unless you opt for an elaborate design and decide to add a lot of features on your pages. Last but not least, it is rewarding to see your project come to life.
+                    </p>
+                    </div>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+
+    <div class = "copyright-and-design">
+        <p>© Pierre Marionneau</p>
+        <p>Designed by me, using HTML, CSS and JS</p>
+    </div>
+    </footer>
+
+</html>
+
