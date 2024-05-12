@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <link href="css/prism.css" rel="stylesheet">
+        <script src="js/prism.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's data project on personal finances (csv files)">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "pierre marionneau, data analysis, personal finance data, process csv files, financial management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class = "container-post block">
+            <div id = "content" class = "sub-container-post">
+                <div class = "blog">
+                    <h1>Querying SQLite database with python</h1>
+                    <p>
+                        This project is part of a series of articles around football analytics.
+                        The whole project is hosted on github: check it out!
+                    </p>
+                    <a href = "https://github.com/highxsky/" target = "_blank" class = "button">Github link</a>
+                    <div class="separator"></div>
+                    <h2>Introduction</h2>
+                    <p>
+                        I have retrieved european football data from a Kaggle challenge. It was made available as a SQLite database, which is an embedded, server-less relational database management system.
+                        <br>In this post, I will show you how to connect to a SQLite database and query data with Python.
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Approach</h2>
+                    <h3>1 - IDE, database and Python DB API standards</h3>
+                    <p>
+                        In order to query data fronm a SQLite database (but also PostGreSQL or MySQL DBs) with Python, several steps are required. 
+                        First, a connection is setup between the IDE and the DB, with a connect() method.
+                        Second, a cursor is created. It is a python object that acts as intermediary between a DB connection and a SQL query.
+                        Third, a SQL statement is passed through the cursor object.
+                        Finally, data is retrieved (via fetch).
+                        <br>After a few internet searches, I could not find a clear, universal definition for what a cursor object was and how useful it could be.
+                        For now, remember it is the intermediary between python and the database, with which you will send SQL statements and from which you will fetch results.
+                        This approach (using cursors) is common to many databases (PostgreSQL, SQLite, MySQL...) so it is good to be familiar with it.
+                        Here is a schema found on <a href = "https://www.geeksforgeeks.org/how-to-connect-python-with-sql-database/" target = "_blank">GeeksForGeeks</a>, that summarizes things well.
+                    </p>
+                    <img id="myImage" src="imgs/SQL and Python relationship - GeeksForGeeks.jpg" alt="Relationship between a Python IDE and a MySQL database with Python DB API" onclick="openModal()">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>2 - Connection, profiling and test queries</h3>
+                    <h4>Connection</h4>
+                    <p>
+                        Usually, when connecting to a DB with python, you build a connection string, which specifies the target data source and how you connect to it (by providing host, port, service name, username, password).
+                        Here, there are no such thing so the connection is extremely straightforward.
+                    </p>
+                    <h4>Data profiling</h4>
+                    <p>
+                        Working with a database tool such as DBeaver or Toad, you usually have access to a nice graphical interface that shows you the DB schema, its tables, its columns and a preview of the data.
+                        <br>As a data analyst, it is a good practice to always start by profiling your data, i.e. analyzing its content, structure and metadata. 
+                        Put simply: getting to know what you are dealing with.
+                    </p>
+                    <p>
+                        When profiling a database, Here are a few things to look for:
+                        <ul>
+                            <li>the list of available tables</li>
+                            <li>the number of rows in tables</li>
+                            <li>the list of columns in tables</li>
+                            <li>the relationships between tables</li>
+                            <li>the column data types</li>
+                        </ul>
+                        <br>Below are some useful SQLite queries and a python code snippet to output a dataframe with column headers.
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# import SQLite3 package
+import sqlite3
+import pandas as pd
+
+# connect to DB
+conn = sqlite3.connect(cfg.db_file)
+
+# create a cursor object
+cursor = conn.cursor()
+
+# list tables
+list_tables = "SELECT name FROM sqlite_master WHERE type='table'"
+
+# list columns (position, name, type, number of non null values, default value, primary key indicator)
+list_columns_from_table = "PRAGMA table_info(table_name)"
+
+# preview a few rows of data
+preview_table_sample = "SELECT * FROM table_name LIMIT 10"
+
+# preview output as dataframe, with column headers
+# with SQLite DB, columns aren't available by default
+query_output = cursor.execute(preview_table_sample).fetchall()
+column_names = [row[0] for row in cursor.description]
+df = pd.DataFrame(data=query_output, columns=column_names)
+                        </code>
+                    </pre>
+                    <h3>3 - Querying data with pandas</h3>
+                    <p>
+                        Once you are more familiar with the data you are working with and that you have a clearer idea of what you want to extract out of your SQL database, you can proceed to the next step.
+                        Pandas library works well with SQL databases, including SQLite. It is fairly easy to query data and output it as a dataframe, using the "pd.read_sql_query" function.
+                        <br>When writing SQL queries, here are a few good practices to have in mind:
+                        <ul>
+                            <li><b>Avoid SELECT * statements:</b> that will save network and disk resources and be easier to manage (in case of added columns, changed names, column's reordering)</li>
+                            <li><b>Comment your queries:</b> it will be easier for you to maintain over time and it will make things simpler for your colleagues if they ever need to use your queries</li> 
+                            <li><b>Indent your code:</b> if you are lazy, there are free tools to help you, such as <a href = "https://codebeautify.org/sqlformatter" target = "_blank">Code Beautify</a></li>
+                            <li><b>Use aliases:</b> when querying multiple tables, it makes things easier to manage with aliases</li>
+                        </ul>
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# retrieving Real Madrid matches
+get_rma_matches = """
+
+    -- team_api_id = 8633 is Real Madrid identifier
+    -- home and away matches involving Real Madrid will be queried
+
+    SELECT
+        m.id, m.country_id, 
+        m.league_id,
+        m.season,
+        m.stage,
+        m.date,
+        m.match_api_id,
+        m.home_team_api_id,
+        ht.team_long_name AS home_team_name,
+        ht.team_long_name AS home_team_acronym,
+        m.away_team_api_id,
+        at.team_long_name AS away_team_name,
+        at.team_long_name AS away_team_acronym,
+        m.home_team_goal,
+        m.away_team_goal,
+        m.goal,
+        m.shoton,
+        m.shotoff,
+        m.foulcommit,
+        m.card,
+        m.cross,
+        m.corner,
+        m.possession
+    FROM Match m
+    LEFT JOIN Team AS ht
+    ON ht.team_api_id = m.home_team_api_id
+    LEFT JOIN Team AS at
+    ON at.team_api_id = m.away_team_api_id
+    WHERE (
+        m.home_team_api_id = 8633
+        OR m.away_team_api_id = 8633
+    )
+"""
+
+team_names_df = pd.read_sql_query(get_rma_matches, conn)
+                        </code>
+                    </pre>
+                    <div class="separator"></div>
+                    <h2>Conclusion</h2>
+                    <p>
+                       SQL and Python are very powerful, especially when combined together. 
+                       For a future data analyst, it is important to be comfortable with both. 
+                       Here is a great resource to get hands on experience with SQL: <a href = "https://sqlzoo.net/wiki/SQL_Tutorial" target = "_blank">SQLZoo</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+
+    <div class = "copyright-and-design">
+        <p>© Pierre Marionneau</p>
+        <p>Designed by me, using HTML, CSS and JS</p>
+    </div>
+    </footer>
+
+</html>
+
