@@ -81,15 +81,18 @@
                     <h2>Approach</h2>
                     <h3>1 - IDE, database and Python DB API standards</h3>
                     <p>
-                        In order to query data fronm a SQLite database (but also PostGreSQL or MySQL DBs) with Python, several steps are required. 
-                        First, a connection is setup between the IDE and the DB, with a connect() method.
-                        Second, a cursor is created. It is a python object that acts as intermediary between a DB connection and a SQL query.
-                        Third, a SQL statement is passed through the cursor object.
-                        Finally, data is retrieved (via fetch).
+                        In order to query data fronm a SQLite database (but also PostGreSQL or MySQL DBs) with Python, several steps are required:
+                        <ul>
+                            <li>First, a connection is setup between the IDE and the DB, with a connect() method</li>
+                            <li>Second, a cursor is created. It is a python object that acts as intermediary between a DB connection and a SQL query</li>
+                            <li>Third, a SQL statement is passed through the cursor object</li>
+                            <li>Fourth, data is retrieved (via fetch).</li>
+                        </ul>
                         <br>After a few internet searches, I could not find a clear, universal definition for what a cursor object was and how useful it could be.
                         For now, remember it is the intermediary between python and the database, with which you will send SQL statements and from which you will fetch results.
                         This approach (using cursors) is common to many databases (PostgreSQL, SQLite, MySQL...) so it is good to be familiar with it.
-                        Here is a schema found on <a href = "https://www.geeksforgeeks.org/how-to-connect-python-with-sql-database/" target = "_blank">GeeksForGeeks</a>, that summarizes things well.
+                        <br>Here is a schema found on, that summarizes things well.
+                        <!-- <a href = "https://www.geeksforgeeks.org/how-to-connect-python-with-sql-database/" target = "_blank">GeeksForGeeks</a> -->
                     </p>
                     <img id="myImage" src="imgs/SQL and Python relationship - GeeksForGeeks.jpg" alt="Relationship between a Python IDE and a MySQL database with Python DB API" onclick="openModal()">
                     <div id="myModal" class="modal">
