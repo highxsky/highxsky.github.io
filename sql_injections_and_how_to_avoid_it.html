@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <link href="css/prism.css" rel="stylesheet">
+        <script src="js/prism.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's data project on personal finances (csv files)">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "pierre marionneau, data analysis, personal finance data, process csv files, financial management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class = "container-post block">
+            <div id = "content" class = "sub-container-post">
+                <div class = "blog">
+                    <h1>SQL injections and how to prevent it</h1>
+                    <p>
+                        This project is hosted on github: check it out!
+                    </p>
+                    <a href = "https://github.com/highxsky/db_work/" target = "_blank" class = "button">Github link</a>
+                    <div class="separator"></div>
+                    <h2>Introduction</h2>
+                    <p>
+                        Using SQL with another programming language, like Python, is very common.
+                        As an example, when creating an account on a website, credentials created through the front-end interface are stored in a database, in the back-end. The input values (username, password) are passed as variables and used in a SQL query to insert these new records.
+                        Another example: querying a database and processing the data as part of a python script, using variables to customize queries.
+                        <br>It is import to be aware of what SQL injection is and implement ways to prevent it. In many companies, with "shadow IT", some key security practices aren't implemented and vulnerabilities exist, waiting to be exploited.
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Understanding SQL injection and its risks</h2>
+                    <p>
+                        SQL injection (SQLi) is a code injection technique where a hacker uses a SQL code snippet to manipulate a database.
+                        Very often, web interfaces where inputs are required and then used to communicate with a database, there are risks.
+                        Risks can be of different nature, summarized below (source: <a href=https://www.theknowledgeacademy.com/blog/sql-injection-cyber-security/ target = "_blank">Knowledge Academy</a>).
+                    </p>
+                    <img id="myImage" src="imgs/sql_injection_risk_types.png" alt="Different type of risks with SQL injection" onclick="openModal()">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>1 - Creating an account via a front-end interface</h3>
+                    <p>
+                        It is not possible to know in advance the username and password that will be chosen by someone when creating its account. These are variable values that will be handled in the back-end, inserted into a SQL query template and then sent to the database.
+                        <br>Below is a bad example of how it could look like in the back-end. This code is prone to SQL injection and I will explain why.
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# note: never do this - this is an example to demonstrate SQL injection risks!
+
+# using username and password as variables
+username = "variable_user_name"
+password = "variable_password"
+
+# using a formatted string to pass these variables
+create_account_parameterized_query = """
+    INSERT INTO users (username, password) VALUES
+    ('{0}', '{1}');
+""".format(username, password)
+
+cursor.execute(create_account_parameterized_query)
+                        </code>
+                    </pre>
+                    <h3>2 - Malicious SQL injection</h3>
+                    <p>
+                        There exists malicious users (and cybersecurity consultants), that will test your code and look for vulnerabilities to exploit.
+                        With the above example, the SQL query is dynamically constructed, through string formatting. The problem is that the string can be anything, including malicious code.
+                        <br>In the below example, the password variable is used for an SQL injection, to steal records from the database.
+                        <br>A semicolon (;) is used to indicate a new SQL statement and the '--' sequence is used to comment/ignore anything that would be written after.
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# using username and password as variables
+username = "malicious_user"
+password = "fake_password\');SELECT * FROM users--"
+
+# using a formatted string to pass these variables
+sql_injection_query = """
+    INSERT INTO users (username, password) VALUES
+    ('{0}', '{1}');
+""".format(username, password)
+
+cursor.execute(sql_injection_query)
+
+# records cannot be stolen this time
+try: 
+    stolen_records = cursor.fetchall()
+    print("Successful SQL injection")
+except: 
+    print("SQL injection attempt failed")
+                        </code>
+                    </pre>
+                    <h3>3 - Preventing SQL injections</h3>
+                    <p>
+                        The main idea is to pass the variables separately, as parameters, rather than dynamically constructing the SQL query through concatenation or string formatting.
+                        <br>This basically consists in leveraging the capabilities offered by your programming language / package. 
+                        In the below example, using psycopg2 (Postgre SQL database adapter for Python), variables are passed separately and therefore interpreted as values, not arbitrary SQL code.
+                        <br>In the example below, note the %s placeholders in the SQL query and then the variables sent in a tuple argument in the execute() function.
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# using username and password as variables
+username = "malicious_user2"
+password = "fake_password\');SELECT * FROM users--"
+
+# using a formatted string to pass these variables
+sql_injection_query = """
+    INSERT INTO users (username, password) VALUES
+    (%s, %s);
+"""
+
+# variables are passed as tuple, using the package's capabilities
+cursor.execute(sql_injection_query, (username, password))
+
+# records cannot be stolen this time
+try: 
+    stolen_records = cursor.fetchall()
+    print("Successful SQL injection")
+except: 
+    print("SQL injection attempt failed")
+                        </code>
+                    </pre>
+                    <div class="separator"></div>
+                    <h2>Conclusion</h2>
+                    <p>
+                       Being aware of what SQL injection is, the threats it poses and leveraging your programming language capabilities properly will drastically reduce the risk of SQL injection.
+                       <br>Separating your variables from your SQL query may not guarantee total safety, this will significantly reduce the risk of SQL injection.
+                       <br>As a data analyst, working with databases and leveraging a programming language's capabilities, it is essential to have some cyber security awareness.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+
+    <div class = "copyright-and-design">
+        <p>© Pierre Marionneau</p>
+        <p>Designed by me, using HTML, CSS and JS</p>
+    </div>
+    </footer>
+
+</html>
+
