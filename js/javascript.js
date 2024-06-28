@@ -9,9 +9,9 @@ function toggleMenu() {
   navigationButton.classList.toggle("rotate");
 }
 
-function openModal() {
+function openModal(img) {
   var modal = document.getElementById("myModal");
-  var img = document.getElementById("myImage");
+  // var img = document.getElementById("myImage");
   var modalImg = document.getElementById("modalImage");
   var captionText = document.getElementById("caption");
 

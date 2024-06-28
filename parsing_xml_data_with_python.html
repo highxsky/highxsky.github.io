@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <link href="css/prism.css" rel="stylesheet">
+        <script src="js/prism.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's data project on personal finances (csv files)">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "pierre marionneau, data analysis, personal finance data, process csv files, financial management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class = "container-post block">
+            <div id = "content" class = "sub-container-post">
+                <div class = "blog">
+                    <h1>Parsing XML data with Python</h1>
+                    <p>
+                        This project is part of a series of articles around football analytics.
+                        Work is hosted on github: check it out!
+                    </p>
+                    <a href = "https://github.com/highxsky/football_analytics" target = "_blank" class = "button">Github link</a>
+                    <div class="separator"></div>
+                    <h2>Introduction</h2>
+                    <p>
+                        Sometimes, you have to deal with semi-structured data such as XML (Extensible Markup Language, basically a way to store and organize data).
+                        This is something you can find, typically when working with web services, e-commerce applications, but also databases.
+                        <br>It was the case on my current football analytics project: the matches table from the database I worked with had events stored as XML in dedicated columns (goals, corners, etc..).
+                        <br>for 1 match (1 row), there were N events, each stored as HTML/XML content in some of the table's columns.
+                        <br>In this post, I will show you how to parse that kind of data with a great python package: ElementTree.
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Approach</h2>
+                    <h3>1 - Markup language and tree structure</h3>
+                    <p>
+                        A markup language is a set of rules defining how content (text, images) presents itself. 
+                        HTML is a markup language, but also LaTeX and, of course, XML. 
+                        It can be structured (e.g. as a list, a table...) and formatted (e.g. bold).
+                        <br>First, this language is characterized by tags. 
+                        An example of tags would be:
+                        <xmp><h1>Hello World!</h1> where <h1> is the opening tag and </h1> the closing tag</xmp>
+                        <br>Second, Markup language have a tree structure, made of a root element, child elements, sibling elements and attributes.
+                        <hr>
+                        <br>The below example is highly simplified but should help you get a clearer understanding of how an element tree is structured.
+                        <ul>
+                            <li>The &lthtml&gt tag is the root element: there's nothing above</li>
+                            <li>The &ltbody&gt tag is a parent element to the two &ltdiv&gt elements below</li>
+                            <li>The &ltdiv&gt tags are parent elements to the elements below, but also children - and sibling - elements to the &ltbody&gt element</li>
+                            <li>The &ltimg&gt and &ltp&gt children elements of the two &ltdiv&gt elements above</li>
+                            <li>The &ltimg&gt tag has 4 attributes, which are the properties, stored as key-value pairs (src, alt, width, height)</li>
+                        </ul>
+                    </p>
+                    <img id="myImage" src="imgs/element_tree_structure.png" alt="Breakdown of an element tree" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>2 - Analyzing the available data</h3>
+                    <p>
+                        When dealing with semi-structured data such as json, xml or html files, it can useful to use a code beautifier to analyze it easily.
+                        In my case, I extracted the content of a few cells (intersection of a row and a column) and copy/paste these on <a href="https://codebeautify.org/xmlviewer" target = "_blank">Code Beautify</a>.
+                        <br>That way, you can get a better understanding of how your data is structured and work with it.
+                    </p>
+                    <img id="myImage" src="imgs/xml_beautifier.png" alt="Beautifying XML content" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>3 - Breaking down the data structure</h3>
+                    <p>
+                        By breaking down the above structure, it can be noted &ltgoal&gt is the root element, &ltvalue&gt a parent element and tags such as &ltid&gt or &ltelapsed&gt are children and sibling elements.
+                        <br>Meaningful data to extract such as which player scored a goal (&ltgoal&gt), which team is the player part of (&ltplayer1&gt), or when (&ltelapsed&gt) and how (&ltsubtype1&gt) was the goal scored is now clearly identified.
+                        <br>Note that it is a good practice to test a few other values in this table and column, to ensure not to miss any valuable information when parsing it out.
+                    </p>
+                    <h3>3 - Parsing with Python and ElementTree</h3>
+                    <p>
+                        There are multiple ways to parse out data with XML ElementTree package.
+                        In the notebook that I have referrenced, you have some examples of how to do it.
+                        <br>There are two main ways to work with this package, presented below.
+                    <h4>A - Using XML ElementTree built-in functions</h4>
+                        <p>
+                            This is for vanilla use cases (simple, basic use cases).
+                            If you don't really know what you need, or if your data set is not too voluminous, you can use the XML ElementTree functions. 
+                            <br>Here are some examples of how to access the data that you need in an XML file.
+                        </p>
+                        <pre class="no-indent">
+                            <code class="language-python">
+# xml string = value at the intersection of the 4th row, column goal
+xml_string = df.loc[4, "goal"]
+
+# getting the root element
+root = ET.fromstring(xml_string)
+
+# getting the tag
+root_tag = root.tag
+
+# getting the attributes, if any
+root_attrib = root.attrib
+
+##########################################################
+
+# looping over each child element in root
+for child in root:
+    print(child.tag, child.attrib)
+
+##########################################################
+
+# looping over each element that has the tag "player1" (the goal scorer)
+for element in root.iter("player1"):
+    print(element)
+
+##########################################################
+
+# children elements are nested: we use indexes to access these
+root[1].tag
+
+# if we want the grand children, we can use another index
+root[1][1].tag
+
+# etc..
+root[1][1][0].tag
+
+##########################################################
+
+# accessing an element by it's value
+searched_text = "37576"
+
+for element in root.iter():
+    if element.text == searched_text:
+        print(element.tag, element.text)
+                            </code>
+                        </pre>
+                        <h4>B - Using XPath capabilities</h4>
+                        <p>
+                            Similarly to Regular Expressions (Regex), there exists XPath expressions, which are ways to navigate tree structures.
+                            This is more suitable for non vanilla use cases (less standard/basic use cases).
+                            <br>The advantage of using XPath capabilities is that you can avoid scanning parts of a tree that you don't care about.
+                            When you are dealing with large volumes of data, it may prove extremely useful to manage your workload properly. 
+                            <br>Here are some XPath expressions examples. For more guidance, I suggest to use <a href = "https://www.w3schools.com/xml/xpath_syntax.asp", target = "_blank">this great W3School resource on XPath syntax</a>.
+                        </p>
+                        <pre class="no-indent">
+                            <code class="language-python">
+# All "player1" grand children from root element
+# "." selects the current node (here: root)
+# / selects from the current node
+for element in root.findall("value"):
+    print(element.tag, element.text)
+
+# Getting the goal scorer (player1) for all goals
+for element in root.findall("value//player1"):
+    print(element.tag, element.text)
+
+# Getting the goal scorer (player1) for the first goal only
+for element in root.findall(".//value[1]//player1"):
+    print(element.tag, element.text)
+                            </code>
+                        </pre>
+                        <h3>4 - Parsing XML data out of a SQL column</h3>
+                        <p>
+                            In my case, there were multiple columns with meaningful data stored as events, in an XML structure: goals, corners, fouls, cards, etc..
+                            Below is the script that I wrote to do it. Basically, it iterates over each row and creates a dictionary out of each event, extracting meaningful data out of it.
+                            <br> This can then be transformed into a dataframe, easier to manipulate with packages such as Pandas or NumPy.
+                        </p>
+                        <pre class="no-indent">
+                            <code class="language-python">
+i = 0
+
+# creating an empty list to host event dictionaries
+goal_events_dicts_list = []
+
+# iterate over each row / match
+for xml_string in df["goal"]:
+
+    root = ET.fromstring(xml_string)
+
+    # extracting elements below value
+    for element in root.findall("./value"):
+
+        # Access specific elements or attributes within each 'value' element
+        elapsed_time = element.findtext("elapsed")
+        elapsed_time_plus = element.findtext("elapsed_plus")
+        team = element.findtext("team")
+        goal_scorer = element.findtext("player1")
+        assist_player = element.findtext("player2")
+        event_type = element.findtext("event_incident_typefk")
+        type = element.findtext("type")
+        sub_type = element.findtext("subtype")
+        event_id = element.findtext("id")
+
+        # appending the list with dictionaries
+        goal_events_dicts_list.append({
+            "match_id": df["match_api_id"][i], # add current match ID to the dictionary
+            "event_id": event_id,
+            "event_type": type,
+            "event_sub_type": sub_type,
+            "team": team,
+            "goal_scorer": goal_scorer,
+            "assist_player": assist_player,
+            "elapsed_time": elapsed_time,
+            "elapsed_additional_time": elapsed_time_plus,
+            "event_type_key": event_type
+        })
+    
+    i = i + 1
+
+goal_events_df = pd.DataFrame.from_dict(goal_events_dicts_list)
+                            </code>
+                        </pre>
+                    <div class="separator"></div>
+                    <h2>Conclusion</h2>
+                    <p>
+                       Working with semi-structured data is not uncommon for data analysts.
+                       The key is to have a basic understanding of how the data is structured and using an appropriate parser.
+                       Here is a great resource to practice your XPath skills: <a href = "https://scrapinghub.github.io/xpath-playground/" target = "_blank">XPath Playground</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+
+    <div class = "copyright-and-design">
+        <p>© Pierre Marionneau</p>
+        <p>Designed by me, using HTML, CSS and JS</p>
+    </div>
+    </footer>
+
+</html>
+
