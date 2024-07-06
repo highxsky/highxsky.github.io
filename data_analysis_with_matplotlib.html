@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang = "fr-FR">
+    <head>
+        <!-- link towards css file "styles.css" -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- link towards js file "javascript.js" -->
+        <script src="js/javascript.js"></script>
+        <link href="css/prism.css" rel="stylesheet">
+        <script src="js/prism.js"></script>
+        <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
+        <meta name = "author" content = "Pierre Marionneau">
+        <!-- Giving the web page a title tag -->
+        <title>Pierre Marionneau - Data & Analytics Portfolio</title>
+        <!-- Specifying a description that includes keywords relating to the content of your page is useful for SEO -->
+        <meta name = "description" content = "Pierre Marionneau's data project on personal finances (csv files)">
+        <!-- this element specifies the document's character encoding -->
+        <meta charset="utf-8">
+        <!-- the keywords tag is not used anymore by search engines due to excess from spammers in this section -->
+        <meta keywords= "pierre marionneau, data analysis, personal finance data, process csv files, financial management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- meta tags to ensure the webpage will be loaded without caching -->
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <!-- title tag, allowing to give a name to the page in the browser -->    
+        <script src="https://kit.fontawesome.com/4fa9675dd4.js" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJWSDMSVZF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJWSDMSVZF');
+        </script>
+    </head>
+
+<!-- section "navigation"-->
+    <header>
+        <div class = "header-section">
+            <div class = "navigation-section">
+                <button onclick="toggleMenu()" class = "navigation-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div id = "navigation-menu" class = "navigation-menu">
+                    <ul class = "navigation-list">
+                        <li class = "navigation-item"><a href = "index.html">Home</a></li>
+                        <li class = "navigation-item"><a href = "resume.html">Resume</a></li>
+                        <li class = "navigation-item"><a href = "blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "social-network-section">
+                <ul class = "social-network-list">
+                    <li class = "social-buttons"><a href="https://www.linkedin.com/in/pierremarionneau/" target = "_blank" class="fa fa-linkedin" alt = "LinkedIn"></a></li>
+                    <li class = "social-buttons"><a href="https://github.com/highxsky/" target = "_blank" class="fa fa-github" alt = "GitHub"></a></li>
+                    <li class = "social-buttons"><a href="mailto:marionneaupierre@proton.me" target = "_blank" class="fa fa-envelope" alt = "Email"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class = "container-post block">
+            <div id = "content" class = "sub-container-post">
+                <div class = "blog">
+                    <h1>Data visualization with Matplotlib</h1>
+                    <p>
+                        This project is hosted on github: check it out!
+                    </p>
+                    <a href = "https://github.com/highxsky/football_analytics" target = "_blank" class = "button">Github link</a>
+                    <div class="separator"></div>
+                    <h2>Introduction</h2>
+                    <p>
+                        Mastering data visualization packages such as Matplotlib, Seaborn or Plotly are useful skills for a data analyst. 
+                        While it is possible to do most of what you need with tools like Tableau, Power BI or Looker, packages such as Matplotlib offer a lot more, in terms of visualizations and of flexibility.
+                        <br>As part of my Football Analytics project, I wanted to showcase some of Matplotlib features and visualizations. 
+                        Dataset analyzed is related to players and goals from European football championship games, from 2008 to 2016.
+                        </p>
+                    <h3>1 - Why Matplotlib?</h3>
+                    <p>
+                        Matplotlib presents several advantages over BI tools like Tableau, Power BI or Looker for data exploration and data visualization.
+                        First, it is part of your IDE (Integrated Development Environment) so you can process your data and visualize it in the same place.
+                        Second, you have access to a high variety of chart types, from basic to elaborate visualizations, as well as customization features.
+                        Third, it is open source and free, which makes it a cost effective option.
+                    </p>
+                    <img id="myImage" src="imgs/matplotlib_viz/matplotlib.png" alt="Matplotlib logo" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>2 - Getting started with Matplotlib</h3>
+                    <p>
+                        It is possible to do data visualization with just a few lines of code. While the below example is insufficient for a good visualization (in my opinion), it shows how easy it can be!
+                        For data exploration purposes, when you need to become more familiar with your data, I think modelling the data and visualizing it helps a lot. Below the code and the output.
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# data prep
+top_3_goal_scorers = header_attempts_and_goals_df.loc[header_attempts_and_goals_df["sub_type"] == "goal"]
+top_3_goal_scorers = top_3_goal_scorers.groupby(by="player", as_index=False).agg({"player_name": "first", "event_id": "nunique"})
+top_3_goal_scorers = top_3_goal_scorers.sort_values(by="event_id", ascending=False).head(3)
+
+# data viz
+fig, ax = plt.subplots()
+players = top_3_goal_scorers["player_name"]
+goals = top_3_goal_scorers["event_id"]
+ax.bar(players, goals)
+ax.set_ylabel('goals')
+ax.set_title('Header goals per player (top 3)')
+plt.show()
+                        </code>
+                    </pre>
+                    <img id="myImage" src="imgs/matplotlib_viz/top_3_header_goal_scorers.png" alt="Top 3 header goal scorers, from 2008 to 2016" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <h3>3 - Limitations with basic visualizations</h3>
+                    <p>
+                        The below chart is a no-no. It is visually not appealing and it is not easily understandable.
+                        While a few lines of code can generate a powerful visualization, this is not always the case.
+                        <br>If we look at the below chart, here are a few takeaways:
+                        <ul>
+                            <li>it lacks a title and legends</li>
+                            <li>x axis labels cannot be read properly</li>
+                            <li>bar values are missing</li>
+                            <li>it is monochromatic (which is okay, but a gradient may be nicer)</li>
+                        </ul>
+                        <br>In the next section, we will review a few ways to customize Matplotlib charts for better visualizations.
+                    </p>
+                    <img id="myImage" src="imgs/matplotlib_viz/bad_matplotlib_visualization_example.png" alt="Bad visualization example with Matplotlib" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    <div class="separator"></div>
+                    <h2>Customizing Matplotlib visualizations</h2>
+                    <p>
+                        Matplotlibs is highly flexible. Looking at the previous visualization, it is missing a few things: colors, titles and labels.
+                        Visually, it is obvious that Cristiano Ronaldo scored more headers than Fernando Llorente, but it is harder to read the exact number of goals. 
+                        Also, it would be a nice touch to have different shades of the same color on this chart, to show the decrease in the number of header goals.
+                    </p>
+                    <h3>1 - Titles and labels</h3>
+
+                    <!-- ### Labels
+
+                    1) each artist / bar of the chart coordinates must be fetched (bar.get_x(), bar.get_y())
+                    2) each artist dimensions must be fetched (bar.get_width(), bar.get_height())
+                    3) a legend is plot with the function ax.text()
+                    4) each label is positioned with dedicated coordinates
+                        - x coordinate will be it's x position + it's width divided by 2 (so that it is centered)
+                        - y coordinate will be it's height, to which you can add +1 / +2 (to be slightly above bar) -->
+                    <p>
+                        There are plenty of options to customize titles and labels. Some of the most common features are: font (police, size, color), background color, rotation and positioning.
+                        Working with the previous chart, we will add: a chart title, x and y axis labels and bar labels.
+                    </p>
+                    <p>
+                        Each bar artist has coordinates (x, y), a width and a height. The idea is to place each bar label at the right place.
+                        To position a label at the center of a bar, the idea is to get it's x coordinate (get_x()) then half of its width (get_width() / 2) and then center it (ha = "center").
+                        To position a label at the top of a bar, the idea is to set it to just above its height (get_height() + 1).
+                    </p>
+                    <p>
+                        Rotating the x axis labels makes the visualization more readable. For optimal results with a 45 degree rotation, 2 more features are required: horizontal alignment set to right (ha = "right") and an anchored rotation_mode (rotation_mode = "anchor").
+                    </p>
+                    <p>The below code snippet shows some options, commented to explain each of these.</p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# adding title, x and y labels
+ax.set_title("Header goals per player \n(top 10)") # \n for line return
+ax.set_ylabel("Goals")
+ax.set_xlabel("Players")
+
+# adding labels to bars
+for bar, value in zip(bars, goals):
+    ax.text(
+        x=bar.get_x() + bar.get_width() / 2,
+        y=bar.get_height() + 1,
+        s=value,
+        ha="center",
+        va="center",
+        color="black"
+    )
+
+# 45 degree rotation, using both horizontal alignment and rotation mode for best readability
+plt.xticks(rotation=45, ha="right", rotation_mode="anchor", fontsize="small")
+                        </code>
+                    </pre>
+                    <img id="myImage" src="imgs/matplotlib_viz/customizing_titles_labels.png" alt="Customizing titles and labels on a visualization" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    <div class="separator"></div>
+                    </div>
+                    <h3>2 - Colors</h3>
+                    <p>
+                        It is possible to have different colors on a visualization, including a color gradient. You need to assign one color per data point or to all data points.
+                        The trick here is to do normalize the values (min-max scaling), i.e. to rescale these values on a range from 0 to 1.
+                        These new values will define the "alpha" of the color argument, which is it's transparency (0 = transparent, 1 = opaque).
+                        Below the code sample for this (note that colors is a list of colors, one per data point).
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# adding a color gradient
+# this is done by normalization / min-max scaling
+normalized_goals = np.array(goals) / max(goals)
+colors = [("#020079", alpha) for alpha in normalized_goals]
+
+# ...
+
+# creating bars with a color argument
+bars = ax.bar(players, goals, color=colors)
+                        </code>
+                    </pre>
+                    <img id="myImage" src="imgs/matplotlib_viz/color_gradient_matplotlib.png" alt="Adding a color gradient to a visualization" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    <div class="separator"></div>
+                    </div>
+                    <h3>3 - Legend</h3>
+                    <p>
+                        You can also add a legend to your chart. In our example, this is not very useful, but let's see how it's done anyway.
+                        One legend element is called a "handle". It is made of 2 components: a patch of color and a label. The code example below shows how to create a simple legend.
+                    </p>
+                    <pre class="no-indent">
+                        <code class="language-python">
+# adding a color based on the values: top 3 players are in green, other players are in orange
+colors = ["green" if i < 3 else "orange" for i in range(len(top_10_goal_scorers))]
+
+# adding handles
+handles = [
+    Patch(facecolor="green", label="Top 3 players"),
+    Patch(facecolor="orange", label="Other top players")
+]
+
+# ...
+
+# legend
+plt.legend(handles=handles)
+                        </code>
+                    </pre>
+                    <img id="myImage" src="imgs/matplotlib_viz/legend_matplotlib.png" alt="Customizing titles and labels on a visualization" onclick="openModal(this)">
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    <div class="separator"></div>
+                    </div>
+                    <h3>4 - Other useful features</h3>
+                    <p>
+                        There are plenty of options to enrich a matplotlib visualization, on top of titles, labels and colors.
+                        If your visualization does not fit your figure area, you can try plt.tight_layout() for better results.
+                        If you want to add a grid, you can use plt.grid(), which can make your visualizations more readable.
+                        Very useful too, the ax.set_xscale() and ax.set_yscale() features, to adjust your scaling (e.g. adjust to a logarithmic scale).
+                    </p> 
+                    </p>
+                    <div class="separator"></div>
+                    <h2>Conclusion</h2>
+                    <p>
+                        Matplotlib's flexibility makes it an extremely powerful tool for data visualizations. However, it is easy to make unappealing viz and waste your time working your way through the many available customization features.
+                        This article was only an introduction to some of the many features that Matplotlib offer. 
+                        Being a bit familiar with Matplotlib is also useful to then initiate to another great data viz package, Seaborn, as it is built on top of Matplotlib.
+                    </p>
+                </div>
+            </div> 
+        </div>
+    </body>
+
+    <footer>
+
+    <div class = "copyright-and-design">
+        <p>© Pierre Marionneau</p>
+        <p>Designed by me, using HTML, CSS and JS</p>
+    </div>
+    </footer>
+
+</html>
+
