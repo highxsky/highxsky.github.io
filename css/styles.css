@@ -169,7 +169,7 @@ styling for buttons on webpages
 .social-network-section { /* third item of the header section, i.e. the social media links  */
   align-items:flex-end;
   justify-items:center;
-  flex-basis:30%;
+  flex-basis:0%;
   text-align:center;
   margin:1vmin;
   padding:0;
@@ -177,7 +177,6 @@ styling for buttons on webpages
 
 .social-network-list { /* social media section (github, linkedin...), aka social network list */
   display: flex;
-  flex-wrap: wrap;
   height: auto;
   justify-content: flex-end;
   align-items: center;
