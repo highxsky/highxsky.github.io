@@ -3,11 +3,11 @@
 <html lang = "fr-FR">
     <head>
         <!-- link towards css file "styles.css" -->
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="../css/styles.css">
         <!-- link towards js file "javascript.js" -->
-        <script src="js/javascript.js"></script>
-        <link href="css/prism.css" rel="stylesheet">
-        <script src="js/prism.js"></script>
+        <script src="../js/javascript.js"></script>
+        <link href="../css/prism.css" rel="stylesheet">
+        <script src="../js/prism.js"></script>
         <!-- Specifying an author is useful in case someone wants to contact the author of the page -->
         <meta name = "author" content = "Pierre Marionneau">
         <!-- Giving the web page a title tag -->
@@ -107,7 +107,7 @@ ax.set_title('Header goals per player (top 3)')
 plt.show()
                         </code>
                     </pre>
-                    <img id="myImage" src="imgs/matplotlib_viz/top_3_header_goal_scorers.png" alt="Top 3 header goal scorers, from 2008 to 2016" onclick="openModal(this)">
+                    <img id="myImage" src="../imgs/matplotlib_viz/top_3_header_goal_scorers.png" alt="Top 3 header goal scorers, from 2008 to 2016" onclick="openModal(this)">
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="modalImage">
@@ -126,7 +126,7 @@ plt.show()
                         </ul>
                         <br>In the next section, we will review a few ways to customize Matplotlib charts for better visualizations.
                     </p>
-                    <img id="myImage" src="imgs/matplotlib_viz/bad_matplotlib_visualization_example.png" alt="Bad visualization example with Matplotlib" onclick="openModal(this)">
+                    <img id="myImage" src="../imgs/matplotlib_viz/bad_matplotlib_visualization_example.png" alt="Bad visualization example with Matplotlib" onclick="openModal(this)">
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="modalImage">
@@ -184,7 +184,7 @@ for bar, value in zip(bars, goals):
 plt.xticks(rotation=45, ha="right", rotation_mode="anchor", fontsize="small")
                         </code>
                     </pre>
-                    <img id="myImage" src="imgs/matplotlib_viz/customizing_titles_labels.png" alt="Customizing titles and labels on a visualization" onclick="openModal(this)">
+                    <img id="myImage" src="../imgs/matplotlib_viz/customizing_titles_labels.png" alt="Customizing titles and labels on a visualization" onclick="openModal(this)">
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="modalImage">
@@ -211,7 +211,7 @@ colors = [("#020079", alpha) for alpha in normalized_goals]
 bars = ax.bar(players, goals, color=colors)
                         </code>
                     </pre>
-                    <img id="myImage" src="imgs/matplotlib_viz/color_gradient_matplotlib.png" alt="Adding a color gradient to a visualization" onclick="openModal(this)">
+                    <img id="myImage" src="../imgs/matplotlib_viz/color_gradient_matplotlib.png" alt="Adding a color gradient to a visualization" onclick="openModal(this)">
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="modalImage">
@@ -240,7 +240,7 @@ handles = [
 plt.legend(handles=handles)
                         </code>
                     </pre>
-                    <img id="myImage" src="imgs/matplotlib_viz/legend_matplotlib.png" alt="Customizing titles and labels on a visualization" onclick="openModal(this)">
+                    <img id="myImage" src="../imgs/matplotlib_viz/legend_matplotlib.png" alt="Customizing titles and labels on a visualization" onclick="openModal(this)">
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="modalImage">
@@ -276,4 +276,3 @@ plt.legend(handles=handles)
     </footer>
 
 </html>
-
