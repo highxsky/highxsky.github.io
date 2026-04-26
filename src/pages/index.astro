@@ -1,0 +1,447 @@
+---
+import '../styles/global.css'
+import { skillGroups } from '../data/skills'
+import { projects } from '../data/projects'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Pierre Marionneau — Analytics Engineer. 8+ years helping clients leverage their data." />
+    <title>Pierre Marionneau · Data & Analytics</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pierre Marionneau",
+        "jobTitle": "Analytics Engineer",
+        "url": "https://www.pierremarionneau.dev",
+        "email": "marionneaupierre@proton.me",
+        "sameAs": [
+          "https://www.linkedin.com/in/pierremarionneau",
+          "https://github.com/highxsky"
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <!-- ─── NAV ─────────────────────────────────────────────────── -->
+    <nav class="nav">
+      <div class="container nav-inner">
+        <span class="nav-logo">pm.</span>
+        <div class="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="/resume_pierre_marionneau.pdf" target="_blank" rel="noopener noreferrer" class="nav-cv">CV ↗</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ─── HERO ─────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-name">Pierre Marionneau</h1>
+        <p class="hero-tagline">
+          Analytics Engineer.<br />
+          8+ years helping clients leverage their data.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-primary">View projects</a>
+          <a href="https://github.com/highxsky" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-heading">About me</h2>
+        <div class="about-body">
+          <p>
+            Analytics Engineer with over 8 years of experience. I started as a
+            Management Consultant at KPMG — 4 years learning how to frame and deliver
+            data projects that solve business problems. I then spent 4 years as a Senior
+            Data Analyst at Electronic Arts, building pipelines, dashboards and automated
+            solutions.
+          </p>
+          <p>
+            I help clients leverage their data and address their business challenges.
+            I focus on building solutions made to last and made to scale.
+          </p>
+          <div class="about-links">
+            <a href="https://www.linkedin.com/in/pierremarionneau" target="_blank" rel="noopener noreferrer" class="text-link">LinkedIn ↗</a>
+            <a href="https://github.com/highxsky" target="_blank" rel="noopener noreferrer" class="text-link">GitHub ↗</a>
+            <a href="/resume_pierre_marionneau.pdf" target="_blank" rel="noopener noreferrer" class="text-link">Download CV ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SKILLS ────────────────────────────────────────────────── -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-heading">Skills</h2>
+        <div class="skills-grid">
+          {skillGroups.map(group => (
+            <div class="skill-group">
+              <p class="skill-group-label" style={`color: ${group.color}`}>{group.label}</p>
+              <div class="skill-tags">
+                {group.skills.map(s => (
+                  <span class="skill-tag" style={`--tag-color: ${group.color}`}>{s}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ──────────────────────────────────────────────── -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-heading">Projects</h2>
+        <div class="projects-list">
+          {projects.map(p => (
+            <article class="project-card">
+              <div class="project-header">
+                <h3 class="project-title">{p.title}</h3>
+                <div class="project-links">
+                  {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" class="text-link">GitHub ↗</a>}
+                  {p.demo   && <a href={p.demo}   target="_blank" rel="noopener noreferrer" class="text-link">Live ↗</a>}
+                </div>
+              </div>
+              <p class="project-desc">{p.description}</p>
+              <div class="project-tags">
+                {p.tags.map(t => <span class="project-tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="projects-more">
+          <a href="https://github.com/highxsky" target="_blank" rel="noopener noreferrer" class="text-link">View all repositories on GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ───────────────────────────────────────────────── -->
+    <section id="contact" class="section section-bordered">
+      <div class="container">
+        <h2 class="section-heading">Contact</h2>
+        <p class="contact-desc">
+          Available for freelance missions and full-time roles.<br />
+          Reach out and I'll get back to you quickly.
+        </p>
+        <a href="mailto:marionneaupierre@proton.me" class="btn-primary">
+          Say hello →
+        </a>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/pierremarionneau" target="_blank" rel="noopener noreferrer" class="text-link">LinkedIn</a>
+          <a href="https://github.com/highxsky" target="_blank" rel="noopener noreferrer" class="text-link">GitHub</a>
+          <a href="/resume_pierre_marionneau.pdf" target="_blank" rel="noopener noreferrer" class="text-link">CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Pierre Marionneau · Built with Astro</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<style>
+  /* ── Layout ──────────────────────────────────────── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  /* ── Nav ─────────────────────────────────────────── */
+  .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .nav-link {
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+  .nav-link:hover { color: var(--text); }
+
+  .nav-cv {
+    font-size: 0.8125rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.18s;
+  }
+  .nav-cv:hover { border-color: var(--accent); }
+
+  /* Hide middle nav links on small screens */
+  @media (max-width: 520px) {
+    .nav-link { display: none; }
+  }
+
+  /* ── Hero ────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 0 3rem;
+  }
+  .hero-name {
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .hero-tagline {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 0.875rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── Buttons ─────────────────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #050d07;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    transition: opacity 0.18s;
+  }
+  .btn-primary:hover { opacity: 0.82; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: border-color 0.18s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); }
+
+  /* ── Section shared ──────────────────────────────── */
+  .section {
+    padding: 5rem 0;
+  }
+  .section-bordered {
+    border-top: 1px solid var(--border);
+  }
+  .section-heading {
+    font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Text link ───────────────────────────────────── */
+  .text-link {
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+  .text-link:hover { color: var(--text); }
+
+  /* ── About ───────────────────────────────────────── */
+  .about-body p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 580px;
+    margin-bottom: 1.1rem;
+  }
+  .about-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  /* ── Skills ──────────────────────────────────────── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 2.5rem;
+  }
+  @media (max-width: 560px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  .skill-group-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .skill-tag {
+    font-size: 0.8125rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: default;
+    transition: color 0.18s, border-color 0.18s, background 0.18s;
+  }
+  .skill-tag:hover {
+    color: var(--tag-color);
+    border-color: var(--tag-color);
+    background: color-mix(in srgb, var(--tag-color) 8%, var(--surface));
+  }
+
+  /* ── Projects ────────────────────────────────────── */
+  .projects-list {
+    display: grid;
+    gap: 1.1rem;
+  }
+  .project-card {
+    padding: 1.6rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  .project-desc {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.1rem;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .project-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent-border);
+  }
+  .projects-more {
+    margin-top: 1.75rem;
+  }
+
+  /* ── Contact ─────────────────────────────────────── */
+  .contact-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  /* ── Footer ──────────────────────────────────────── */
+  .footer {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .footer p {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+</style>
